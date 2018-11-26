@@ -1,0 +1,379 @@
+<apex:page standardController="SalesForecastDetail__c" recordSetVar="vPlans" docType="html-5.0" >
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    
+    
+    <script>
+    var AccountList=[];
+    var SKUList=[];
+    var resultList=[];
+    var ModelList=[];
+    var SubCategoryList=[];
+     var HeadId;
+    var TotalNumberRow;
+    
+    $(document).ready(function(){  
+        HeadId= location.search.split('id=')[1];
+       
+        var AccountSQL='SELECT Id, Name FROM Account WHERE RecordType.DeveloperName like \'Dealer%\' ';//'RecordType.DeveloperName like '    RecordType.DeveloperName like \'Dealer%\'
+        var SkuSQL='select id,Name,Model__r.Name,SubCategory__c from SKU__c limit 1000';
+        var conn = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+        var conn2 = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+        
+        
+        conn.query(AccountSQL, function(err, res) {
+            if (err) { return console.error(err); } // console.log(res.records);
+            initAccountList(res.records);
+            conn2.query(SkuSQL, function(err, res2) {
+                if (err) { return console.error(err2); } //SKUList=;
+                initSKUList(res2.records);
+                InitTable();
+            });
+            
+        });
+        
+        
+        
+    });
+    
+    
+    function CancelFun(){
+        window.location.href='/'+HeadId;
+       
+    }
+    
+    function initAccountList(OrinList){
+        //AccountList
+        for(var i=0;i<OrinList.length;i++){
+            //console.log(OrinList[i].Name);
+            AccountList.push(OrinList[i].Name);
+        }
+        
+    }
+    
+    //construct List
+    function initSKUList(OrinList){
+        for(var i=0;i<OrinList.length;i++){//console.log(OrinList[i].Model__r.Name);
+            
+            if(ModelList.indexOf(OrinList[i].Model__r.Name)==-1){
+                ModelList.push(OrinList[i].Model__r.Name);
+            }
+            
+            if(SubCategoryList.indexOf(OrinList[i].SubCategory__c)==-1){
+                SubCategoryList.push(OrinList[i].SubCategory__c);
+            }
+            SKUList.push(OrinList[i].Name);
+        }
+    }
+    
+    function addFun(){
+    	document.getElementById("InputTbale").insertRow(-1).innerHTML = '<tr> <td><a onclick="addFun();" id="a_0"><span class=" glyphicon glyphicon-duplicate" aria-hidden="true" style="color:black;font-size: 20px;" ></span>	 </a>  <a  class="deleteRowButton"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;font-size: 20px;" ></span>	 </a></td> <td><input type="text" class="form-control bs DealerCls"/></td> <td><input type="text" class="form-control bs SubCatCls" /><td><input type="text" class="form-control bs ModelCls" /></td><td><input type="text" class="form-control bs SKUCls" /></td></td> <td><input type="text" class="form-control bs " /></td> <td><input type="text" class="form-control bs " /></td> <tr>';
+   		initAuto();
+        init();
+    }
+    
+    
+    function addNewLineFun(){
+        
+        var NewLineNum=Number($('#NewLineNum').val());
+        
+        for(var i=0;i<NewLineNum;i++){
+            var cloneid='a_'+String(i+TotalNumberRow);
+            document.getElementById("InputTbale").insertRow(-1).innerHTML = '<tr> <td><a onclick="CloneFun(this);" id='+cloneid+'><span class=" glyphicon glyphicon-duplicate" aria-hidden="true" style="color:black;font-size: 20px;" ></span>	 </a>  <a  class="deleteRowButton"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;font-size: 20px;" ></span>	 </a></td> <td><input type="text" class="form-control bs DealerCls"/></td> <td><input type="text" class="form-control bs SubCatCls" /><td><input type="text" class="form-control bs ModelCls" /></td><td><input type="text" class="form-control bs SKUCls" /></td></td> <td><input type="text" class="form-control bs " /></td> <td><input type="text" class="form-control bs " /></td> <tr>';
+        }
+        TotalNumberRow=TotalNumberRow+NewLineNum;
+        initAuto();
+        init();
+    }
+   
+     function DeleteRow(){
+         TotalNumberRow--;
+      $(this).parents('tr').first().remove();
+    }
+    
+    function init(){
+        $('.deleteRowButton').click(DeleteRow);
+        
+    }
+    
+    function initAuto(){
+           $(".DealerCls").autocomplete({
+            source: AccountList, 
+            minLength: 0,
+            autoFocus: true,
+            scroll: true,
+            change: function (event, ui) {
+                console.log('Test');
+            }, 
+            focus: function(event, ui){
+                event.preventDefault();
+            }  
+        }).focus(function () {
+            $(this).autocomplete("search", "");
+        });
+        
+           $(".ModelCls").autocomplete({
+            source: ModelList, 
+            minLength: 0,
+            autoFocus: true,
+            scroll: true,
+            change: function (event, ui) {
+                console.log('Test');
+            }, 
+            focus: function(event, ui){
+                event.preventDefault();
+            }  
+        }).focus(function () {
+            $(this).autocomplete("search", "");
+        });
+        
+           $(".SubCatCls").autocomplete({
+            source: SubCategoryList, 
+            minLength: 0,
+            autoFocus: true,
+            scroll: true,
+            change: function (event, ui) {
+                console.log('Test');
+            }, 
+            focus: function(event, ui){
+                event.preventDefault();
+            }  
+        }).focus(function () {
+            $(this).autocomplete("search", "");
+        });
+        
+        
+        $(".SKUCls").autocomplete({
+            source: SKUList, 
+            minLength: 0,
+            autoFocus: true,
+            scroll: true,
+            change: function (event, ui) {
+                console.log('Test');
+            }, 
+            focus: function(event, ui){
+                event.preventDefault();
+            }  
+        }).focus(function () {
+            $(this).autocomplete("search", "");
+        });
+        
+        
+     
+    }
+    
+    function CloneFun(that){//console.log(that.id.replace('a_',''));// Dealer_0    //console.log($('#'+that.id).parent().next().val());
+       
+       //Get records
+        var  Dealerid='Dealer_'+that.id.replace('a_','');
+        
+        var DealerVal=$('#'+Dealerid).val();//console.log('DealerVal:   '+DealerVal.length);
+        var SubCategoryVal=$('#SubCategory_'+that.id.replace('a_','')).val();
+        console.log(SubCategoryVal);    
+
+
+        //Draw New Line
+        var cloneid='a_'+String(TotalNumberRow+1);
+        
+         var tempid;
+        var newLineHTML='<tr> <td><a onclick="CloneFun(this);" id='+cloneid+'><span class=" glyphicon glyphicon-duplicate" aria-hidden="true" style="color:black;font-size: 20px;" ></span>	 </a>  <a  class="deleteRowButton"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;font-size: 20px;" ></span>	 </a></td>';
+        tempid='Dealer_'+String(TotalNumberRow+1);
+ 
+        newLineHTML+='<td><input type="text" class="form-control bs DealerCls" id='+tempid+' /></td>';
+        tempid='SubCategory_'+String(TotalNumberRow+1);
+        newLineHTML+=' <td><input type="text" class="form-control bs SubCatCls"  id='+tempid+'/></td>';
+        tempid='Model_'+String(TotalNumberRow+1);
+        newLineHTML+='<td><input type="text" class="form-control bs ModelCls"  id='+tempid+' /></td>';
+        tempid='SKUInput_'+String(TotalNumberRow+1);
+        newLineHTML+='<td><input type="text" class="form-control bs SKUCls"  id='+tempid+'  /></td>';
+        newLineHTML+=' <td><input type="text" class="form-control bs " /></td> <td><input type="text" class="form-control bs " /></td> <tr>';
+        
+        
+        document.getElementById("InputTbale").insertRow(-1).innerHTML = newLineHTML;
+        TotalNumberRow=TotalNumberRow+1;
+        initAuto();
+        init();
+        
+        
+        $('#Dealer_'+TotalNumberRow).val(DealerVal);
+        $('#SubCategory_'+TotalNumberRow).val(SubCategoryVal);
+    }
+    
+    
+    function SaveFun(){
+       QuickSaveFun();
+        setTimeout(function(){ 
+           window.location.href='/'+HeadId;
+        }, 1000);
+    }
+    
+    
+     
+    function QuickSaveFun(){
+    	progressinfo('alert-info','alertMeg','Working in progress now. Please wait . Thank you....');
+         setTimeout(function(){ 
+            SystemInfo('alert-success','alertMeg','<i class="fa fa-check"></i>','Save success! ');
+        }, 500);
+    }
+   
+    
+    function SystemInfo(divtype,divid,icondiv,message){
+
+        var inhtml='<div class="alert '+divtype+'  fade in "><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+icondiv+'  '+message+'</div>';
+        $('#'+divid).html(inhtml);
+    }
+    
+    function InitTable(){
+        var inHTML;
+        if(resultList.length>0){
+            
+        }else{
+            console.log('InitTable');
+            //console.log(SKUList);
+            inHTML='<table class="table table-hover" id="InputTbale" ><thead> <tr> <th style="text-align: center;">Action</th> <th style="text-align: center;">Dealer</th> <th style="text-align: center;">Sub-Category</th>  <th style="text-align: center;">Model</th>  <th style="text-align: center;" >SKU</th><th style="text-align: center;" >Quantity</th> <th style="text-align: center;" >Description</th> </tr> </thead>';
+            inHTML+=' <tr> <td><a onclick="CloneFun(this);" id="a_0"><span class=" glyphicon glyphicon-duplicate" aria-hidden="true" style="color:black;font-size: 20px;" ></span>	 </a>  <a class="deleteRowButton" id="d_0"><span class="glyphicon glyphicon-trash" aria-hidden="true" style="color:red;font-size: 20px;" ></span>	 </a></td> <td><input type="text" class="form-control bs DealerCls" id="Dealer_0"/></td> <td><input type="text" class="form-control bs SubCatCls" id="SubCategory_0" /></td><td><input type="text" class="form-control bs ModelCls" id="Model_0"  /></td><td><input type="text" class="form-control bs SKUCls" id="SKUInput_0"  /></td>  <td><input type="text" class="form-control bs " /></td> <td><input type="text" class="form-control bs " /></td> <tr>';
+            
+            inHTML+='</table>';
+            TotalNumberRow=1;
+        }
+        
+        
+        $('#ResultTbale').html(inHTML);
+        
+        initAuto();
+        init();
+        
+    }
+    
+    
+    function progressinfo(divtype,divid,message){ // 
+        var inhtml='<div class="alert '+divtype+'  fade in "><i class="fa fa-refresh fa-spin"></i>  '+message+'</div>';
+        $('#'+divid).html(inhtml);
+    }
+    
+    
+    </script>
+    
+    <style type="text/css">
+        .file-upload {
+        position: relative;
+        overflow: hidden;
+        margin-right: 10px; 
+        margin-left: 10px; 
+        }
+        .file-upload2 {
+        position: relative;
+        overflow: hidden;
+        margin-right: 1px; 
+        margin-left: 1px; 
+        }
+        /* highlight results */ 
+        .ui-autocomplete span.hl_results {
+        background-color: #ffff66;
+        }
+        
+        /* loading - the AJAX indicator */
+        .ui-autocomplete-loading {
+        background: white url('/img/loading.gif') right center no-repeat;
+        }
+        
+        .ui-autocomplete {
+        height: 200px;
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        overflow-x: hidden;
+        overflow:auto;
+        /* add padding to account for vertical scrollbar */
+        padding-right: 20px;
+        left: 0;
+        }
+        /* IE 6 doesn't support max-height
+        * we use height instead, but this forces the menu to always be this tall
+        */
+        *html .ui-autocomplete {
+        height: 200x;
+        }
+    </style>
+    <body> 
+        <div class="container-fluid" style="margin:5px;">
+            <div class="bs row">  
+                <div class="panel-group">
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h4>Mass Create Sales Forecasts Details</h4></div>
+                        <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-md-8">
+                                     <div id="alertMeg"> </div>
+                                     <table style="margin-bottom: 10px;">
+                                         <tr>
+                                             <td>
+                                                 <button type="button" onclick="SaveFun();"  class="file-upload" style="display: inline-block; padding-top: 6px; padding-right: 12px; padding-bottom: 6px; padding-left: 12px;   margin-bottom: -2px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #337ab7;border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>  Save</button>
+                                             </td>
+                                             <td>
+                                                 <button type="button" onclick="QuickSaveFun();"   class="file-upload" style="display: inline-block; padding-top: 6px; padding-right: 12px; padding-bottom: 6px; padding-left: 12px;   margin-bottom: -2px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #337ab7;border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                                     <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>  Quick Save</button>
+                                             </td>
+                                              <td>
+                                                 <button type="button" 
+                                                         onclick="CancelFun();" class="file-upload" style="display: inline-block; padding-top: 6px; padding-right: 12px; padding-bottom: 6px; padding-left: 12px;   margin-bottom: -2px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #f0ad4e;border-color: #eea236; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                                     <span class="glyphicon glyphicon-file" aria-hidden="true"></span>  Cancel</button>
+                                             </td>
+                                             <td>
+                                                 <button class="file-upload" type="button"
+                                                         style="display: inline-block; padding: 6px 12px;margin-bottom: 0;font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #5cb85c ;border-color: #4cae4c; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;"  >            
+                                                     
+                                                     <span class="glyphicon glyphicon-export" aria-hidden="true"></span>  Copy Last Month
+                                                 </button>
+                                             </td>
+                                             
+                                             <td>
+                                                 <table>
+                                                     <tr>
+                                                         <td>
+                                                             <input id="NewLineNum" type="text" class="form-control bs " value="1" style="width: 3em;"/>
+                                                         </td>
+                                                         <td>
+                                                             <button type="button" class="file-upload2" style="display: inline-block; padding-top: 6px; padding-right: 12px; padding-bottom: 6px; padding-left: 12px;   margin-bottom: -2px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #5bc0de;border-color: #46b8da; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" 
+                                                                     onclick="addNewLineFun()">
+                                                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add New Line </button>
+                                                         </td>
+                                                     </tr>
+                                                     
+                                                 </table>
+                                                 
+                                              
+                                             </td>
+                                             
+
+                                             
+                                            
+                                         </tr>
+                                     </table>
+                                     
+                                 </div>
+                                 <div class="col-md-4">
+                                 </div>
+                            </div>
+                            <div class="row">
+                                <div id="ResultTbale" class="container col-md-10"  ></div><div class="col-md-2"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    
+    
+</apex:page>

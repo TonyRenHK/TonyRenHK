@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:orientation="vertical">
+   
+    <LinearLayout
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+         android:src="@drawable/tony"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+        />  
+        <TextView android:id="@+id/textView0"
+	          android:layout_width="fill_parent"
+			  android:layout_height="wrap_content"
+			  android:textColor="#000000"
+			  android:textSize="20dip"
+			  android:background="#00FF00"
+		      android:text="GAME Platform"
+		      android:gravity="center_vertical|center_horizontal"
+		/>
+    </LinearLayout>
+    
+     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/start_id"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:background="#912CEE"
+            android:text="Enable Icon" 
+            android:textSize="35sp"/>
+        <Button
+            android:id="@+id/remove_id"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:background="#828282"
+            android:text="Disable Icon" 
+            android:textSize="35sp"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:textSize="30sp"
+            android:background="#828282"
+            android:text="Start Game 1:   Table tennis" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:textSize="30sp"
+            android:background="#912CEE"
+            android:text="Start Game 2:   Shooting Game" />
+     </LinearLayout>
+     
+    <LinearLayout
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="520dp"
+            android:layout_height="120dp"
+            android:textSize="30sp"
+            android:background="#E6E8FA"
+            android:textColor="#000000" 
+            android:text="Start Game 3:       2048" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:gravity="center"
+        android:orientation="horizontal" >
+               
+        <Button
+            android:id="@+id/hide_setting_id"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:background="#828282"
+            android:textSize="30sp"
+            android:text="Hide Setting" />
+
+        <Button
+            android:id="@+id/quit_game_id"
+            android:layout_width="255dp"
+            android:layout_height="120dp"
+            android:background="#912CEE"
+            android:textSize="30sp"
+            android:text="Quit Game" />
+       
+    </LinearLayout>
+</LinearLayout>

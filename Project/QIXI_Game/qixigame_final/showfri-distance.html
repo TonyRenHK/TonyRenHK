@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>七夕,测试爱情距离--朋友查看爱情距离</title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+<body>
+	<div id="wrapper">
+		<div class="header_bg"></div>
+		<div class="footer_bg"></div>
+		<div class="distance_info">
+			<div class="info_box">
+				<img class="city_icon" src="images/city-icon.png" alt="城市">
+				<p class="player_name">肖加薪</p>
+				<p class="city_name">广州</p>
+			</div>
+			<div class="link">
+				<span class="blink_point link_point"></span>
+				<span class="slink_point link_point"></span>
+				<span class="slink_point link_point"></span>
+				<span class="blink_point link_point"></span>
+				<span class="slink_point link_point"></span>
+				<span class="slink_point link_point"></span>
+				<span class="blink_point link_point"></span>
+			</div>
+			<div class="info_box">
+				<img class="city_icon" src="images/city-icon.png" alt="城市">
+				<p class="player_name">林妹妹</p>
+				<p class="city_name">韶关</p>
+			</div>
+		</div>
+		<p class="rank">和Ta相隔999km，超越了99%的人</p>
+		<p class="left_distance">还有<span class="left_num">999</span>km</p>
+		<p class="left_distance">就能把爱意送给林妹妹</p>
+		<div class="meetwrap">
+			<div class="bridge">
+				999/999
+				<img class="bridge_boy" src="images/bridge-boy.png" alt="">
+				<img class="bridge_girl" src="images/bridge-girl.png" alt="">
+			</div>
+		</div>
+		<div id="helpbuild_btn" class="doubleup_btn"><img src="images/help-building.png" alt="邀请朋友"></div>
+		<div id="explain_btn" class="doubledown_btn"><img src="images/explain.png" alt="游戏说明"></div>
+		<div class="mask disappear" id="help_mask">
+			<div class="outBox_wrap helpBox_wrap">
+				<div class="outBox_head">
+					<img class="outBox_headtop" src="images/explainbox-top.png" alt="">
+					<img id="close_btn" src="images/close-btn.png" alt="">
+				</div>	
+				<div class="explain_box">
+					<p class="helpstate">你的搭桥为Ta缩短了</p>
+					<p class="helpmeter"><span>20</span>km</p>
+				</div>
+			</div>
+		</div>
+		<div class="mask disappear" id="explain_mask">
+			<div class="outBox_wrap">
+				<div class="outBox_head">
+					<img class="outBox_headtop" src="images/explainbox-top.png" alt="">
+					<img id="close_btn2" src="images/close-btn.png" alt="">
+				</div>		
+				<div class="explain_box">
+					
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+<script>
+	var helpbuildBtn = document.getElementById("helpbuild_btn");
+	var explainBtn = document.getElementById("explain_btn");
+	var closeBtn = document.getElementById("close_btn");
+	var closeBtn2 = document.getElementById("close_btn2");
+	var helpMask = document.getElementById("help_mask");
+	var explainMask = document.getElementById("explain_mask");
+	closeBtn.addEventListener('click',function(){	
+		removeClass(helpMask,"appear");
+		addClass(helpMask, "disappear");
+		removeClass(explainMask,"appear");
+		addClass(explainMask, "disappear");
+	},false);
+	closeBtn2.addEventListener('click',function(){	
+		removeClass(explainMask,"appear");
+		addClass(explainMask, "disappear");
+	},false);
+	helpbuildBtn.addEventListener('click',function(){	
+		removeClass(helpMask,"disappear");
+		addClass(helpMask, "appear");
+	},false);
+	explainBtn.addEventListener('click',function(){	
+		removeClass(explainMask,"disappear");
+		addClass(explainMask, "appear");
+	},false);
+	function hasClass(obj, cls) {  
+		return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+	}  
+
+	function addClass(obj, cls) {  
+			if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+	}
+
+	function removeClass(obj, cls) {  
+		if (hasClass(obj, cls)) {  
+   		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+    	obj.className = obj.className.replace(reg, ' ');  
+    	}
+	}  
+</script>
+</html>

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.pplo.tzfe.MainActivity" >
+
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Again"
+        />
+    <item
+        android:id="@+id/action_name"
+        android:icon="@drawable/ic_action_name"
+        android:title="Setting"
+        />
+
+</menu>

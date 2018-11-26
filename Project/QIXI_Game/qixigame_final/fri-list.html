@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>七夕,测试爱情距离--好友帮忙列表</title>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <style type="text/css">
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            font-family: "Microsoft YaHei", Verdana, sans-serif, "SimSun";/*字体*/
+        }
+    </style>
+
+  </head>  
+  <body style="background:rgba(0,0,0,0.9);">
+    <div id="wrapper">
+        <div class="outBox_wrap frilistbox_wrap">
+            <div class="outBox_head">
+                <img class="outBox_headtop" src="images/explainbox-top.png" alt="">
+            </div>     
+            <div class="frilist_box">
+                <img class="fri_listhead" src="images/fri-listhead.png" alt="">
+                 <div id="container">
+                    <div id="scroller">
+                        <img src="images/scroller-btn.png" id="scroller-btn">
+                    </div>
+                    <div id="list">
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                        <div class="list-item" >
+                            <img src="images/view-bg.jpg" class="list-item-photo">
+                            <div class="list-item-info">
+                                <div class="list-item-name">路人甲</div>
+                                <div class="list-item-detail">帮忙搭了20KM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="list_close" onclick="cls();">关闭</p>  
+            </div>
+        </div>
+       
+    </div>   
+  </body>
+
+<script type="application/javascript">
+    var list=document.getElementById('list');
+    var scroller=document.getElementById('scroller');
+    var scroller_btn=document.getElementById('scroller-btn');
+    setLayout();
+
+    list.onscroll=function(){
+        var percent=list.scrollTop/(list.scrollHeight-list.offsetHeight);
+        scroller_btn.style.marginTop=(scroller.offsetHeight-scroller_btn.offsetHeight-4)*percent+'px';
+    };
+
+    window.onresize=function(){
+            setLayout();
+    };
+    function setLayout(){
+        var width=window.innerWidth;
+        scroller.style.height=list.style.height=width*0.58+'px';
+    }
+
+    function cls(){
+        window.opener = null;
+        window.close();
+        history.go(-1);
+    }
+</script>
+
+</html>

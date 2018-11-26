@@ -1,0 +1,657 @@
+html{height: 100%;}
+body{
+	height: 100%;
+	padding:0px;
+	/*background: url(../images/show-distance-bg.jpg) top center;*/
+	position: relative;
+	background-size: 100%;
+	background:-webkit-gradient(linear,0% 0%,0% 100%,from(#342970),to(#7258b6));
+	background:-webkit-linear-gradient(top,#342970,#7258b6);
+}
+p{margin: 0px;}
+a{text-decoration: none;}
+
+/*共有部分*/
+.outBox_wrap{
+    height: 50%;
+    width: 80%;
+    margin: 0 auto;
+}
+.outBox_head{
+    position: relative;
+    z-index: 1;
+}
+
+.outBox_tophead{
+    width: 100%;
+}
+
+.single_btn{
+    width: 37%;
+    background: url(../images/pink-btn.png) top center no-repeat;
+    background-size: 100% 100%;
+    margin:0 auto;
+    display:inline-block;
+}
+
+.doubleup_btn{
+    width: 40%;
+    height: 8%;
+    background-color: #ac2c76;
+    border-radius: 3px;
+    margin:0 auto;
+}
+
+.doubleup_btn img{
+    width: 110%;
+    margin-top: -8%;
+    margin-left: -5%;
+}
+
+.doubledown_btn{
+    width: 40%;
+    height: 8%;
+    background-color: #ede2ea;
+    border-radius: 3px;
+    margin:20px auto 0px;
+}
+
+.doubledown_btn img{
+    width: 110%;
+    margin-top: -8%;
+    margin-left: -5%;
+}
+
+.header_bg{
+    width:100%;height: 17%;
+    background: url(../images/show-distance-headbgs.png) top center;
+    position: absolute;top: 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.footer_bg{
+    width:100%;
+    height: 20%;
+    background: url(../images/show-distance-footbg.png) top center;
+    position: absolute;bottom: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+.disappear{
+    display: none;
+}
+.appdear{
+    display: block;
+}
+
+@media screen and (max-height:480px){
+	.single_btn{
+    	width: 30%;
+    }
+}
+
+/*show distance*/
+.distance_info{
+	padding-top: 18%;
+	width: 100%;
+	text-align: center;
+}
+
+.info_box{
+	height: 100%;
+	min-width: 15%;	
+	max-width: 35%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.city_icon{
+	width: 60px;
+	display: block;
+	margin: 0 auto;
+}
+
+.player_name{
+	font-family: "MicrosoftYaHei Bold";
+	font-size: 1em;
+	color: #c92d8c;
+	padding: 5px 0px;
+	max-height: 40px;
+}
+
+.city_name{
+	text-indent: 25px;
+    font-size: 1em;
+	text-align: left;
+	background: url(../images/location-icon.png) top left no-repeat;
+	color: #9189ab;
+	background-size: 17px 17px ;
+}
+
+.link{
+	width: 30%;
+	display: inline-block;
+	margin-top: 6%;
+	vertical-align: top;
+}
+
+.link_point{
+	border-radius: 50%;
+	background-color: #ff9001;
+	display: inline-block;
+}
+
+.blink_point{
+	height: 8px;
+	width: 8px;
+}
+
+.slink_point{
+	height: 4px;
+	width: 4px;
+}
+
+.rank{
+	color: #7054c7;
+	text-align: center;
+	font-size: 1.1em;
+	margin: 15px 0px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 90%;
+}
+
+.left_distance{
+	font-family: "STHeiti Light";
+	color: #c92d8c;
+	text-shadow:2px 3px 1px #27174e;
+	font-size: 25px;
+	text-align: center;
+    font-weight: bold;
+}
+
+.left_num{
+	font-family: "STHeiti Light";
+	color: #fff;
+	text-shadow:2px 3px 1px #27174e;
+	font-size: 2em;
+}
+
+.rank_num{
+    color: #fff;
+}
+
+.meetwrap{
+	width: 100%;
+	text-align: center;
+	margin-top: 0.8px;
+    margin-bottom: 1em;
+}
+
+.bridge{
+	height: 31px;
+	width: 55%;
+	background: url(../images/bridge-bg.png) repeat-x;
+	position: relative;
+	margin:66px auto 0px;
+	color: white;
+	line-height: 30px;
+    background-size: 100% 100%;
+}
+
+.bridge_boy{
+	height: 103px;
+	width:auto;
+	position: absolute;
+	right: -70px;
+    top: -50px;
+}
+
+.bridge_girl{
+	height: 100px;
+	width:auto;
+	position: absolute;
+	left: -70px;
+    top: -50px;
+}
+
+#share_btn img{
+	width: 100%;
+}
+
+.check_result{
+	text-align: center;
+}
+
+.check_result a{
+	color: #937be1;
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.mask{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.9);
+	position: absolute;
+	top: 0px;
+}
+
+#invite_mask{
+	padding-top:15%;
+}
+
+.invite_btn{
+	width:60%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.explain_box{
+	width: 100%;
+	height: 60%;
+	border-radius: 4px;
+	background-color: #ac2c76;
+	margin-top: -8%;
+	position: relative;
+}
+
+#close_btn,#close_btn2{
+	width: 25px;
+	position: absolute;
+	right: -8px;
+	bottom: 2px;
+}
+
+.code_wrap{
+	width: 40%;
+	height: 30%;
+	margin: 10px auto 0px;
+}
+
+.code_wrap img{
+	width: 100%;
+}
+
+.gamerule{
+	color: #fff;
+	font-size: 1.2em;
+	line-height: 1.3em;
+	padding: 0.7em 0.5em 0em 0.5em;
+}
+
+@media screen and (max-height:480px){
+    .city_icon{
+        width: 40px;
+    }
+     .bridge{
+        height: 18px;
+        line-height: 18px;
+        margin:50px auto 0px;
+    }
+    .bridge_girl {
+      height: 68px;
+      left: -54px;
+      top: -38px;
+    }
+    .bridge_boy {
+      height: 64px;
+      right: -46px;
+      top: -32px
+    }
+    .rank{
+        margin:0.5em auto;
+    }
+    .distance_info {
+        padding-top: 15%;
+    }
+    .left_distance {      
+        text-shadow: 1px 1px 0px #27174e;
+        font-size: 1em;
+	}
+    .link{
+		width: 20%;
+	}
+	.blink_point{
+		height: 5px;
+		width: 5px;
+	}
+	.slink_point{
+		height: 3px;
+		width: 3px;
+	}
+	.info_box{
+		max-width: 38%;
+	}
+    .gamerule{
+		font-size: 0.9em;
+		line-height: 1.5em;
+	}
+}
+
+/*show friend distance*/
+
+
+/*help friend result*/
+.helpBox_wrap{
+	padding-top:20%;
+}
+
+.helpstate{
+	color: #fff;
+	font-family: "STHeiti Light";
+	padding-top: 50px;
+	text-align: center;
+}
+.helpmeter{
+	color: #ff9001;
+	font-family: "STHeiti Light";
+	text-align: center;	
+}
+.helpmeter span{
+	font-size: 65px;
+	text-shadow:2px 3px 1px #27174e;
+}
+
+
+/*meet*/
+.hands{
+	width: 100%;
+	height: 40%;
+	padding-top: 20%;
+	margin:0 auto;
+}
+
+.hands img{
+	width: 100%;
+}
+
+.inputbox{
+	width: 100%;
+	height: 20%;
+	background: url(../images/input-box.png) no-repeat;
+	background-size: 100%;
+	margin-top: -15%;
+	margin-bottom: 5%;
+    position: relative;
+}
+
+.inputbox p{
+    position: absolute;
+    bottom: 17%;
+    left: 17%;
+}
+
+.sharelove_bg{
+	background: url(../images/sharelovebg.png) top center no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.sharelove_mask{
+	display: none;
+}
+
+.fans_guide{
+	height: 55%;
+	width: 90%;
+	background: url(../images/fans.png) top center no-repeat;
+	background-size: 100%;
+	margin: 10% auto;
+}
+
+.gift_code{
+	margin-top: 15%;
+}
+
+.fansgift_mask{
+	display: none;
+}
+
+/*prophesy*/
+#get_fire{
+	position: absolute;
+	bottom: 5%;
+	left: 10%;
+	width: 20%;
+}
+#fire{
+	position: absolute;
+	left: 43%;
+	bottom: 0px;
+	width: 12%;
+}
+#light{
+	position: absolute;
+	top:60%;
+	left: 30%;
+	width: 45%;
+}
+
+.poem1{
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
+.poem2{
+	height: 0px;
+	overflow: hidden;
+	position: absolute;
+	top: 10%;
+	right: 15%;
+}
+
+.poem1 img,.poem2 img,.poem img{
+	height: 20em;
+	width: auto;
+}
+
+/* 火把-向上向下 */
+.fire_updown{
+	-webkit-animation:1.5s ease-out forwards;
+	-moz-animation:1.5s ease-out forwards;
+	-ms-animation:1.5s ease-out forwards;
+	animation:1.5s ease-out forwards;
+}
+.fire_updown{-webkit-animation-name:updown;-moz-animation-name:updown;-ms-animation-name:updown;animation-name:updown;}
+@-webkit-keyframes updown{
+    0%{-webkit-transform:translateY(0);opacity:1;}
+    50%{-webkit-transform:translateY(-50%);opacity:1;}
+    100%{-webkit-transform:translateY(0px);opacity:0;}
+}
+@-moz-keyframes updown{
+    0%{-moz-transform:translateY(0);opacity:1;}
+    50%{-webkit-transform:translateY(-50%);opacity:1;}
+    100%{-moz-transform:translateY(0px);opacity:0;}
+}
+@-ms-keyframes updown{
+    0%{-ms-transform:translateY(0);opacity:1;}
+    50%{-webkit-transform:translateY(-50%);opacity:1;}
+    100%{-ms-transform:translateY(0px);opacity:0;}
+}
+@keyframes updown{
+    0%{transform:translateY(0);opacity:1;}
+    50%{-webkit-transform:translateY(-50%);opacity:1;}
+    100%{transform:translateY(0px);opacity:0;}
+}
+
+
+/* 天灯-向上向下 */
+.light_fly{
+	-webkit-animation:4s ease-out forwards;
+	-moz-animation:4s ease-out forwards;
+	-ms-animation:4s ease-out forwards;
+	animation:4s ease-out forwards;
+}
+.light_fly{-webkit-animation-name:fly;-moz-animation-name:fly;-ms-animation-name:fly;animation-name:fly;}
+@-webkit-keyframes fly{
+    0%{-webkit-transform:translate(0) scale(1);opacity:1;}
+    20%{-webkit-transform:translate(-70%,-20%) scale(0.8);opacity:0.9;}
+    30%{-webkit-transform:translate(-80%,-25%) scale(0.8);opacity:0.8;}   
+    70%{-webkit-transform:translate(40%,-80%) scale(0.4);opacity:0.6;}
+    100%{-webkit-transform:translate(0%,-100%) scale(0.2);opacity:0;}
+}
+@-moz-keyframes fly{
+    0%{-moz-transform:translate(0) scale(1);opacity:1;}
+    20%{-moz-transform:translate(-70%,-20%) scale(0.8);opacity:0.9;}
+    30%{-moz-transform:translate(-80%,-25%) scale(0.8);opacity:0.8;}
+    70%{-moz-transform:translate(40%,-80%) scale(0.4);opacity:0.6;}
+    100%{-moz-transform:translate(0%,-100%) scale(0.2);opacity:0;}
+}
+@-ms-keyframes fly{
+    0%{-ms-transform:translate(0) scale(1);opacity:1;}
+    20%{-ms-transform:translate(-70%,-20%) scale(0.8);opacity:0.9;}
+    30%{-ms-transform:translate(-80%,-25%) scale(0.8);opacity:0.8;}
+    70%{-ms-transform:translate(40%,-80%) scale(0.4);opacity:0.6;}
+    100%{-ms-transform:translate(0%,-100%) scale(0.2);opacity:0;}
+}
+@keyframes fly{
+    0%{transform:translate(0) scale(1);opacity:1;}
+    20%{transform:translate(-70%,-20%) scale(0.8);opacity:0.9;}
+    30%{transform:translate(-80%,-25%) scale(0.8);opacity:0.8;}
+    70%{transform:translate(40%,-80%) scale(0.4);opacity:0.6;}
+    100%{transform:translate(0%,-100%) scale(0.2);opacity:0;}
+}
+.poem{
+	-webkit-animation:3s ease forwards;
+	-moz-animation:3s ease forwards;
+	-ms-animation:3s ease forwards;
+	animation:3s ease forwards;
+}
+.poem{-webkit-animation-name:spread;-moz-animation-name:spread;-ms-animation-name:spread;animation-name:spread;}
+@-webkit-keyframes spread{
+    0%{height: 0px;}
+    50%{height: 150px;}
+    100%{height: 300px;}
+}
+@-moz-keyframes spread{
+    0%{height: 0px;}
+    50%{height: 150px;}
+    100%{height: 300px;}
+}
+@-ms-keyframes spread{
+    0%{height: 0px;}
+    50%{height: 150px;}
+    100%{height: 300px;}
+}
+@keyframes spread{
+    0%{height: 0px;}
+    50%{height: 150px;}
+    100%{height: 300px;}
+}
+
+#prophesy_mask img{
+	width: 80%;
+	display: block;
+	margin:10%;
+	margin-top: 20%;
+	left: 50%;
+	position: absolute;
+	margin-left: -45%;
+}
+#love_city{
+	color: #ac2c76;
+	font-size: 1.5em;
+	line-height: 2em;
+	text-align: center;
+}
+#love_city p{
+	color: #fff;
+    font-family: "STHeiti Light";
+    text-align: center;
+    padding-top:1em;
+}
+#love_city #love_cityname {
+	font-size: 1.8em;
+	text-shadow:1px 1px 1px #27174e;
+	padding-top: 0;
+}
+@media screen and (max-height:480px){
+    .poem img {
+  		height: 16em;
+  	}
+}
+/*friend list*/
+#container{
+    width: 100%;
+    height: 62%;
+}
+#scroller{
+    position: absolute;
+    margin-left: 68%;
+    width: 1.5%;
+    background-image: url("../images/scroller-bg.png");
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#scroller-btn{
+    width: 80%;
+}
+#list{
+    /*margin:auto;*/
+    width: 178%;
+    /*background: blue;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.list-item{
+    font-size: 30px;
+    padding:0px 0px 10px 30px ;
+
+}
+.list-item-photo{
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    float: left;
+}
+.list-item-info{
+
+}
+.list-item-name{
+    font-size: 12px;
+    color: #f0e0e8;
+    padding: 1px 2px 1px 48px;
+}
+.list-item-detail{
+    font-size: 12px;
+    color: #ff9001;
+    padding: 1px 2px 1px 48px;
+
+}
+
+.frilistbox_wrap{
+    height: 60%;
+}
+
+.frilist_box{
+	width: 90%;
+	height: 95%;
+	border-radius: 4px;
+	background-color: #ac2c76;
+	margin:0 auto;
+}
+
+.fri_listhead{
+    margin:5px 5px;
+    height: 20%;
+}
+
+.list_close{
+    background-color: #b93682;
+    color: #ff9001;
+    text-align: center;
+    line-height: 2.5em;
+    font-size: 1em;
+}
+

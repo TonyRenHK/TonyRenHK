@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Tooltip - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ 
+  <script>
+  $('#target').tooltip({
+    items: 'a.target',
+    content: 'Loading…',
+    show: null, // show immediately
+    open: function(event, ui)
+    {
+        if (typeof(event.originalEvent) === 'undefined')
+        {
+            return false;
+        }
+        
+        var $id = $(ui.tooltip).attr('id');
+        
+        // close any lingering tooltips
+        $('div.ui-tooltip').not('#' + $id).remove();
+        
+        // ajax function to pull in data and add it to the tooltip goes here
+    },
+    close: function(event, ui)
+    {
+        ui.tooltip.hover(function()
+        {
+            $(this).stop(true).fadeTo(400, 1); 
+        },
+        function()
+        {
+            $(this).fadeOut('400', function()
+            {
+                $(this).remove();
+            });
+        });
+    }
+});
+  </script>
+  <style>
+  label {
+    display: inline-block;
+    width: 5em;
+  }
+  </style>
+</head>
+<body>
+    <div id="target">
+        <a href="#" class="target">Hover over me!</a>
+        <a href="#" class="target">Hover over me too!</a>
+    </div>
+</body>
+</html>

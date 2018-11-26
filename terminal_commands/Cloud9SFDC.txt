@@ -1,0 +1,71 @@
+tonyrenhk:~/workspace $ git init
+Initialized empty Git repository in /home/ubuntu/workspace/.git/
+tonyrenhk:~/workspace (master) $ git commit -m "Tony20160712"
+On branch master
+
+Initial commit
+
+Untracked files:
+        README.md
+        SFDCCustomField.js
+        SFDCPermission.js
+        SFDCPermissionUpdate.js
+        SFDCUpdate.js
+        client/
+        my_file.txt
+        package.json
+        server.js
+        sfdc.js
+
+nothing added to commit but untracked files present
+tonyrenhk:~/workspace (master) $ git remote add origin https://github.com/TonyRenHK/B6sfdcCloud9.git
+tonyrenhk:~/workspace (master) $ git push -u origin master
+error: src refspec master does not match any.
+error: failed to push some refs to 'https://github.com/TonyRenHK/B6sfdcCloud9.git'
+tonyrenhk:~/workspace (master) $ git remote add origin https://github.com/TonyRenHK/B6sfdcCloud9.git
+fatal: remote origin already exists.
+tonyrenhk:~/workspace (master) $ git push -u origin master
+error: src refspec master does not match any.
+error: failed to push some refs to 'https://github.com/TonyRenHK/B6sfdcCloud9.git'
+tonyrenhk:~/workspace (master) $ git remote add origin2 https://github.com/TonyRenHK/B6sfdcCloud9.git
+tonyrenhk:~/workspace (master) $ git push -u origin2 master
+error: src refspec master does not match any.
+error: failed to push some refs to 'https://github.com/TonyRenHK/B6sfdcCloud9.git'
+tonyrenhk:~/workspace (master) $ git add all
+fatal: pathspec 'all' did not match any files
+tonyrenhk:~/workspace (master) $ git add alltonyb6sfdc
+fatal: pathspec 'alltonyb6sfdc' did not match any files
+tonyrenhk:~/workspace (master) $ git add -A
+tonyrenhk:~/workspace (master) $ git commit -m "Tony201607132"
+[master (root-commit) dcdb662] Tony201607132
+ 17 files changed, 877 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 SFDCCustomField.js
+ create mode 100644 SFDCPermission.js
+ create mode 100644 SFDCPermissionUpdate.js
+ create mode 100644 SFDCUpdate.js
+ create mode 100644 client/css/bootstrap-responsive.min.css
+ create mode 100644 client/css/bootstrap.min.css
+ create mode 100644 client/img/glyphicons-halflings-white.png
+ create mode 100644 client/img/glyphicons-halflings.png
+ create mode 100644 client/index.html
+ create mode 100644 client/js/angular.min.js
+ create mode 100644 client/js/bootstrap.min.js
+ create mode 100644 client/js/jquery.min.js
+ create mode 100644 my_file.txt
+ create mode 100644 package.json
+ create mode 100644 server.js
+ create mode 100644 sfdc.js
+tonyrenhk:~/workspace (master) $ git remote add origin3 https://github.com/TonyRenHK/B6sfdcCloud9.git
+tonyrenhk:~/workspace (master) $ git push -u origin3 master
+Username for 'https://github.com': renchk@foxmail.com
+Password for 'https://renchk@foxmail.com@github.com': 
+Counting objects: 23, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (22/22), done.
+Writing objects: 100% (23/23), 112.97 KiB | 0 bytes/s, done.
+Total 23 (delta 2), reused 0 (delta 0)
+To https://github.com/TonyRenHK/B6sfdcCloud9.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin3.
+tonyrenhk:~/workspace (master) $ 

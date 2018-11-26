@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ac2c76;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ac2c76;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ac2c76;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ac2c76;
+}
+body {
+    font: normal 100% Helvetica, Arial, sans-serif;
+    background-color: #422d88;
+    background: -webkit-gradient(linear, 50% 50%, 50% 75%, from(#473190), to(#1a154d));
+    -moz-user-select: none;
+    -khtml-user-select: none; 
+    user-select: none;
+}
+img {
+    width: 100%;
+    border: none; 
+}
+#wrapper {
+    position: relative;
+    max-width: 30em;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}

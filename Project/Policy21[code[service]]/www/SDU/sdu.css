@@ -1,0 +1,176 @@
+﻿body {
+	overflow-x: hidden;
+	width:95%;
+	margin: 0 auto;
+}
+
+table {
+	border-collapse:collapse;
+	width:100%;
+	vertical-align:text-top;
+}
+td {
+	vertical-align:text-top;
+}
+
+.bor, .bor td {
+	border:1px solid #000000;
+}
+td.nobor {
+	border:1px solid #FFFFFF;
+}
+td.nobors {
+	border:1px solid #FFFFFF;
+}
+td.noborl, td.noborsl  {
+	border:1px solid #FFFFFF;
+	border-right:1px solid #000000;
+}
+td.noborr, td.noborsr  {
+	border:1px solid #FFFFFF;
+	border-left:1px solid #000000;
+}
+td.noborb, td.noborsb  {
+	border-bottom:1px solid #000000;
+}
+td.noborrl  {
+	border-right:1px solid #000000;
+	border-left:1px solid #000000;
+}
+.bors {
+	border:1px solid #000000;
+}
+.tw {
+	width:500px;
+}
+.head {
+	text-align:center;
+	margin: 0 auto;
+}
+.headspan {
+	text-align:left;
+	margin: 0 auto;
+	border:1px solid #000000;
+	font-weight:bold;
+	color:#3366FF;
+	background-color:#A6A6A6;
+}
+.odd {
+	background-color:#87CEFA;
+}
+.even {
+	background-color:#98FB98;
+}
+.midcen {
+	width:100%;
+	margin: 0 auto;
+}
+
+.fif {
+	width:500px;
+}
+
+.one {
+	width:100px;
+}
+
+.qno {
+	width:30px;
+}
+.qno1 {
+	width:80px;
+}
+.qno2 {
+	width:110px;
+}
+.qno3 {
+	width:115px;
+}
+.ano {
+	width:15px;
+}
+.ans {
+	width:50px;
+}
+.ans1 {
+	width:65px;
+}
+.b {
+	font-weight:bold;
+}
+.n {
+	font-weight:normal;
+}
+.u {
+	text-decoration:underline;
+}
+.i {
+	color:#2233FF;
+	font-style:italic;
+}
+.up {
+	vertical-align:super;
+}
+.left {
+	text-align:left;
+}
+.right {
+	text-align:right;
+}
+.cen {
+	text-align:center;
+}
+.bot {
+	vertical-align:bottom;
+}
+.mid {
+	vertical-align:middle;
+}
+.top {
+	vertical-align:top;
+}
+.small {
+	font-size:9px;
+}
+.short {
+	width:60px;
+}
+
+.hhqs {
+/*	float:left;*/
+    width:500px;
+
+}
+
+.mem {
+	width:150px;
+/*    float:left;*/
+}
+/*
+.pobot {
+    position:absolute;
+	bottom:0;
+}
+*/
+.headl {
+	width:10px;
+}
+.hhqs td, .mem td {
+	height:26px;
+}
+.mem td.nobor, .mem td.noborl, .mem td.noborr  {
+	height:26px;
+}
+.mem td.nobors, .mem td.noborsl, .mem td.noborsr {
+	height:26px;
+}
+/*
+input[type="text"] {
+	height:14px;
+	vertical-align:middle;
+}
+input[type="radio"] {
+	margin-top:2px;
+	vertical-align:middle;
+}
+*/

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>        
+        <script src="http://www.csvscript.com/dev/html5csv.js"></script>
+<script>
+$(document).ready(function() {
+
+ $('table').each(function() {
+    var $table = $(this);
+
+    var $button = $("<button type='button'>");
+    $button.text("Export to CSV");
+    $button.insertAfter($table);
+
+    $button.click(function() {     
+         CSV.begin('table').download('Export.csv').go();
+    });
+  });  
+})
+
+</script>
+    </head>
+<body>
+<div id='PrintDiv'>
+<table style="width:100%">
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>      
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>        
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>        
+    <td>80</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

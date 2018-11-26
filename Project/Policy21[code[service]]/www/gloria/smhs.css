@@ -1,0 +1,102 @@
+﻿html, body {
+/*	position:fixed;*/
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-size:125%;
+/*	overflow-x: scroll;*/
+}
+html {
+	width:100%;
+}
+body {
+	width:100%;
+}
+/*
+.wrapper {
+	overflow-x: hidden;
+	width:50%;
+}
+*/
+table {
+	border-collapse:collapse;
+	width:100%;
+	vertical-align:text-top;
+}
+td {
+	vertical-align:text-top;
+}
+
+.bor, .bor td {
+	border:1px solid #000000;
+}
+
+.tw {
+	width:500px;
+}
+.head {
+	text-align:center;
+	margin: 0 auto;
+}
+.headspan {
+	border:1px solid #000000;
+	font-weight:bold;
+	color:#292B2E;
+	background-color:#A6A6A6;
+}
+.odd {
+	background-color:#87CEFA;
+}
+.even {
+	background-color:#FFFACD;
+}
+.red {
+	color:#FF0000;
+}
+.qno {
+	width:60px;
+}
+.ano {
+	width:15px;
+}
+.b {
+	font-weight:bold;
+}
+.u {
+	text-decoration:underline;
+}
+.i {
+	font-style:italic;
+}
+.left {
+	text-align:left;
+}
+.right {
+	text-align:right;
+}
+.cen {
+	text-align:center;
+}
+
+.ans {
+	width:50px;
+}
+.ans1 {
+	width:65px;
+}
+.tt {
+	width:50px;
+}
+.statt {
+	width:250px;
+	margin: 0 auto;
+}
+.login {
+	width:350px;
+	margin: 0 auto;
+}
+.ansed {
+	background-color:#FFBBFF;
+}
+.sam {
+	width:30%;
+}

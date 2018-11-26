@@ -1,0 +1,189 @@
+<apex:page standardController="Vehicle_Model__c"   extensions="VehicleModelCtrler" sidebar="false" readOnly="true" title="Display Page" docType="html-5.0" showHeader="false" >
+     <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+         <meta name="viewport" content="width=device-width, initial-scale=1"/>   
+         <apex:stylesheet value="{!URLFOR($Resource.ASI_JS_Bootstrap_V3_3_6, '/ASI_JS_Bootstrap_V3_3_6/dist_less/css/bootstrap.min.css')}" />      
+          
+         <link rel="stylesheet" href="https://cdn.rawgit.com/LikeHongKong/TestingSite/master/css/main.css" />
+         <link rel="stylesheet" href="https://cdn.rawgit.com/LikeHongKong/TestingSite/master/css/reset.css" />
+
+        <apex:includeScript value="{!URLFOR($Resource.ASI_JS_JQuery_V1_9_1, 'js/jquery.min.js')}" /> 
+        <apex:includeScript value="{!URLFOR($Resource.ASI_JS_JQuery_V1_9_1, 'js/jquery-ui.min.js')}" />        
+        <apex:includeScript value="{!URLFOR($Resource.ASI_JS_Bootstrap_V3_3_6, '/ASI_JS_Bootstrap_V3_3_6/dist_less/js/bootstrap.min.js')}"/>
+        
+         <style>
+             .myButton {
+             -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+             -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+             box-shadow: 0px 0px 0px 2px #9fb4f2;
+             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+             background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+             background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+             background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+             background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+             background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+             background-color:#7892c2;
+             -moz-border-radius:10px;
+             -webkit-border-radius:10px;
+             border-radius:10px;
+             border:1px solid #4e6096;
+             display:inline-block;
+             cursor:pointer;
+             color:#ffffff;
+             font-family:Arial;
+             font-size:19px;
+             padding:12px 37px;
+             text-decoration:none;
+             text-shadow:0px 1px 0px #283966;
+             }
+             .myButton:hover {
+             background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+             background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+             background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+             background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+             background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+             background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+             background-color:#476e9e;
+             }
+             .myButton:active {
+             position:relative;
+             top:1px;
+             }
+
+         </style>
+    </head>
+   
+   
+    <body style="position:center;background:white;height:700px"> 
+        <!---width:700px;height:700px--->
+    
+        <div class="reveal" >
+            
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+            
+                
+                <section >  
+                    <h3>{!Header.name}</h3> 
+                    <p>{!Header.Description1__c}<br/>{!Header.Description_2__c}</p>
+                   
+                    <p>  <a href="{!LEFT($Api.Partner_Server_URL_140, FIND('.com/',$Api.Partner_Server_URL_140)+3)}/{!Header.id}">{!Header.name}</a></p>
+                    <!---<br/><img src="https://raw.githubusercontent.com/LikeHongKong/TestingSite/master/2000px-Volkswagen_logo_2012.svg.png" style="width:140px; height:49px" />--->
+                    <br/><img src="https://raw.githubusercontent.com/LikeHongKong/TestingSite/master/2000px-Volkswagen_logo_2012.svg.png" style="width:10%; height:10%" />
+                </section>
+
+                <section >   
+                    <h3>{!Header.name}</h3><br/>
+                   <!--- <img src="{!FisrstUrl}" style="width:500px; height:313px;"/> --->
+                    <img src="{!FisrstUrl}" style="width:70%; height:40%;"/>
+                    <p>{!Header.Description_2__c}</p>
+                </section>
+                                
+                
+                 <section >    
+                     
+                        <apex:repeat var="Attachment" value="{!AttachmentList}">
+                       
+                           <section> 
+                            	<h3>{!Header.name}</h3>
+                               <!--- <img src="{!LEFT($Api.Partner_Server_URL_140, FIND('.com/',$Api.Partner_Server_URL_140)+3)}/servlet/servlet.FileDownload?file={!Attachment.id}" style="width:500px; height:313px" /> --->
+                           		<img src="{!LEFT($Api.Partner_Server_URL_140, FIND('.com/',$Api.Partner_Server_URL_140)+3)}/servlet/servlet.FileDownload?file={!Attachment.id}" style="width:80%; height:60%" /> 
+                                <p>{!Attachment.Description}</p>
+                          
+                            </section> 
+                          </apex:repeat>   
+                                     
+                </section>
+             
+                <section > 
+                    <h3>{!Header.name}</h3>
+                    <ul>    
+                        
+                        <apex:repeat var="vv" value="{!VVList}">
+                            <li class="fragment">{!vv.name} <span style="{!if(isnull(vv.Highlight__c),'display:none','')}">: </span>{!vv.Highlight__c}</li>
+                            <p>
+                              
+                            </p>
+                        </apex:repeat>
+                    </ul>   
+                    
+                </section>
+
+                    <section > 
+                        <h3>{!Header.name}</h3>
+                        <img src="{!summaryUrl}" class="bs img-responsive " style="width:500px; height:313px" />
+                        <p>{!Header.Description1__c}</p>
+                    </section>
+            
+            </div>
+            
+			
+            <div class="container" style="position: absolute; top: 1em; right: 3em;">
+                <a href="https://elufa-sdfc-poc-dev-ed.lightning.force.com/c/SalesTeam.app" class="myButton" >Back To Product Category</a>
+                
+            </div>
+            
+            
+            <!-- The navigational controls UI -->
+            <aside class="controls">
+                <a class="left" href="#">&#x25C4;</a>
+                <a class="right" href="#">&#x25BA;</a>
+                <a class="up" href="#">&#x25B2;</a>
+                <a class="down" href="#">&#x25BC;</a>
+            </aside>
+
+            <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+            <div class="progress"><span></span></div>
+            <script type="text/javascript" src="https://cdn.rawgit.com/LikeHongKong/TestingSite/master/js/reveal.js"></script>  
+         <script type="text/javascript" src="https://cdn.rawgit.com/LikeHongKong/TestingSite/master/js/zoom.js"></script> 
+             <script>
+        // Parse the query string into a key/value object
+            var query = {};
+            location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+                query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+            } );
+
+            // Fires when a slide with data-state=customevent is activated
+            Reveal.addEventListener( 'customevent', function() {
+                alert( '"customevent" has fired' );
+            } );
+
+            // Fires each time a new slide is activated
+            Reveal.addEventListener( 'slidechanged', function( event ) {
+                // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+            } );
+
+            Reveal.initialize({
+                // Display controls in the bottom right corner
+                controls: true,
+
+                // Display a presentation progress bar
+                progress: true,
+
+                // If true; each slide will be pushed to the browser history
+                history: true,
+
+                // Loops the presentation, defaults to false
+                loop: false,
+
+                // Flags if mouse wheel navigation should be enabled
+                mouseWheel: true,
+
+                // Apply a 3D roll to links on hover
+                rollingLinks: true,
+
+                // UI style
+                theme: query.theme || 'default', // default/neon
+
+                // Transition style
+                transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+            });
+    
+    </script>
+            
+        </div>
+    </body>
+</apex:page>

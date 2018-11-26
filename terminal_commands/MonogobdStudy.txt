@@ -1,0 +1,175 @@
+tonyrenhk:~/workspace (master) $ npm install
+npm WARN package.json knoldus-login-application@0.0.1 No repository field.
+npm WARN package.json knoldus-login-application@0.0.1 No license field.
+ 
+> kerberos@0.0.3 install /home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos
+> (node-gyp rebuild 2> builderror.log) || (exit 0)
+
+make: Entering directory `/home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build'
+  SOLINK_MODULE(target) Release/obj.target/kerberos.node
+  COPY Release/kerberos.node
+make: Leaving directory `/home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/build'
+
+> bson@0.2.5 install /home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/bson
+> (node-gyp rebuild 2> builderror.log) || (exit 0)
+
+make: Entering directory `/home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build'
+  CXX(target) Release/obj.target/bson/ext/bson.o
+make: Leaving directory `/home/ubuntu/workspace/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build'
+connect-flash@0.1.1 node_modules/connect-flash
+
+bcrypt-nodejs@0.0.3 node_modules/bcrypt-nodejs
+
+passport@0.2.0 node_modules/passport
+├── pause@0.0.1
+└── passport-strategy@1.0.0
+
+ejs@0.8.5 node_modules/ejs
+
+passport-local@0.1.6 node_modules/passport-local
+├── pkginfo@0.2.3
+└── passport@0.1.18 (pause@0.0.1)
+
+passport-facebook@2.1.1 node_modules/passport-facebook
+└── passport-oauth2@1.3.0 (uid2@0.0.3, passport-strategy@1.0.0, oauth@0.9.14)
+
+passport-twitter@1.0.4 node_modules/passport-twitter
+├── xtraverse@0.1.0 (xmldom@0.1.22)
+└── passport-oauth1@1.1.0 (utils-merge@1.0.0, passport-strategy@1.0.0, oauth@0.9.14)
+
+passport-google-oauth@1.0.0 node_modules/passport-google-oauth
+├── passport-google-oauth1@1.0.0 (passport-oauth1@1.1.0)
+└── passport-google-oauth20@1.0.0 (passport-oauth2@1.3.0)
+
+socket.io@1.4.8 node_modules/socket.io
+├── debug@2.2.0 (ms@0.7.1)
+├── has-binary@0.1.7 (isarray@0.0.1)
+├── socket.io-parser@2.2.6 (isarray@0.0.1, json3@3.3.2, component-emitter@1.1.2, benchmark@1.0.0)
+├── socket.io-adapter@0.4.0 (socket.io-parser@2.2.2)
+├── engine.io@1.6.11 (base64id@0.1.0, ws@1.1.0, accepts@1.1.4, engine.io-parser@1.2.4)
+└── socket.io-client@1.4.8 (to-array@0.1.4, component-emitter@1.2.0, indexof@0.0.1, object-component@0.0.3, component-bind@1.0.0, backo2@1.0.2, parseuri@0.0.4, engine.io-client@1.6.11)
+
+express@3.4.8 node_modules/express
+├── methods@0.1.0
+├── range-parser@0.0.4
+├── cookie-signature@1.0.1
+├── debug@0.8.1
+├── buffer-crc32@0.2.1
+├── merge-descriptors@0.0.1
+├── fresh@0.2.0
+├── cookie@0.1.0
+├── mkdirp@0.3.5
+├── commander@1.3.2 (keypress@0.1.0)
+├── send@0.1.4 (mime@1.2.11)
+└── connect@2.12.0 (uid2@0.0.3, pause@0.0.1, qs@0.6.6, raw-body@1.1.2, bytes@0.2.1, batch@0.5.0, negotiator@0.3.0, multiparty@2.2.0)
+
+now@0.25.1 node_modules/now
+├── ini@1.3.4
+├── arr-flatten@1.0.1
+├── ansi-escapes@1.4.0
+├── split-array@1.0.1
+├── ignore@3.1.5
+├── array-unique@0.3.2
+├── ms@0.7.1
+├── bytes@2.4.0
+├── graceful-fs@4.1.6
+├── email-validator@1.0.5
+├── docker-file-parser@0.1.0
+├── semver-compare@1.0.0
+├── progress@1.1.8
+├── text-table@0.2.0
+├── minimist@1.2.0
+├── resumer@0.0.0 (through@2.3.8)
+├── async-retry@0.2.1 (retry@0.9.0)
+├── chalk@1.1.3 (ansi-styles@2.2.1, supports-color@2.0.0, escape-string-regexp@1.0.5, has-ansi@2.0.0, strip-ansi@3.0.1)
+├── minimatch@3.0.3 (brace-expansion@1.1.6)
+├── email-prompt@0.1.8 (ansi-escapes@1.3.0, chalk@1.1.1)
+├── copy-paste@1.3.0 (sync-exec@0.6.2, iconv-lite@0.4.13)
+├── cross-spawn@4.0.0 (lru-cache@4.0.1, which@1.2.11)
+├── node-fetch@1.6.0 (is-stream@1.1.0, encoding@0.1.12)
+├── socket.io-client@1.4.8 (to-array@0.1.4, component-emitter@1.2.0, indexof@0.0.1, component-bind@1.0.0, backo2@1.0.2, object-component@0.0.3, debug@2.2.0, has-binary@0.1.7, socket.io-parser@2.2.6, parseuri@0.0.4, engine.io-client@1.6.11)
+├── fs-promise@0.5.0 (mz@2.4.0, any-promise@1.3.0, thenify-all@1.6.0, fs-extra@0.26.7)
+├── spdy@3.4.0 (http-deceiver@1.2.7, handle-thing@1.2.5, select-hose@2.0.0, debug@2.2.0, spdy-transport@2.0.15)
+└── babel-runtime@6.5.0 (core-js@1.2.7)
+
+async@2.0.1 node_modules/async
+└── lodash@4.16.2
+
+mongoose@3.8.8 node_modules/mongoose
+├── hooks@0.2.1
+├── regexp-clone@0.0.1
+├── muri@0.3.1
+├── mpath@0.1.1
+├── ms@0.1.0
+├── sliced@0.0.5
+├── mpromise@0.4.3
+├── mquery@0.5.3 (debug@0.7.4)
+└── mongodb@1.3.23 (kerberos@0.0.3, bson@0.2.5)
+tonyrenhk:~/workspace (master) $ mongo
+MongoDB shell version: 2.6.12
+connecting to: test
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+> show dbs
+admin    (empty)
+knoldus  0.078GB
+local    0.078GB
+> use <knoldus>
+switched to db <knoldus>
+> show collections
+> show user
+2016-09-26T09:15:28.631+0000 don't know how to show [user] at src/mongo/shell/utils.js:729
+> show databases
+<knoldus>  (empty)
+admin      (empty)
+knoldus    0.078GB
+local      0.078GB
+> db.knoldus.find()
+> show collections
+> show databases
+<knoldus>  (empty)
+admin      (empty)
+knoldus    0.078GB
+local      0.078GB
+> use <local>
+switched to db <local>
+> show tables
+> db.getCollectionNames()
+[ ]
+> use <knoldus>
+switched to db <knoldus>
+> db.getCollectionNames()
+[ ]
+> knoldus.getCollectionNames()
+2016-09-26T09:22:53.190+0000 ReferenceError: knoldus is not defined
+> db.knoldus.getCollectionNames()
+2016-09-26T09:23:09.980+0000 TypeError: Property 'getCollectionNames' of object <knoldus>.knoldus is not a function
+> show db
+2016-09-26T09:25:21.582+0000 don't know how to show [db] at src/mongo/shell/utils.js:729
+> show dbs
+<knoldus>  (empty)
+<local>    (empty)
+admin      (empty)
+knoldus    0.078GB
+local      0.078GB
+> show dbs
+<knoldus>  (empty)
+<local>    (empty)
+admin      (empty)
+knoldus    0.078GB
+local      0.078GB
+> use knoldus
+switched to db knoldus
+> db.getCollectionNames()
+[ "system.indexes", "users" ]
+> db.knoldus.find()
+> db.find()
+2016-09-26T09:28:23.356+0000 TypeError: Property 'find' of object knoldus is not a function
+> db.users.find()
+{ "_id" : ObjectId("57e8e20a4cf1889a1ce56f7c"), "user" : { "address" : "", "name" : "", "password" : "$2a$08$FRfK4WpGdCr6Cn22l1sjeuIKRyiCZI//LV6.vFvf6dsd6SS5caX82", "email" : "renchk@qq.com", "username" : "kunkun" }, "__v" : 0 }
+{ "_id" : ObjectId("57e8e2464cf1889a1ce56f7d"), "user" : { "address" : "ddddddddddd", "name" : "oooooooo", "password" : "$2a$08$sjnYPC2CClwtxcFIWhPhX.kO3tHSJfodFOFZWaOcUeQfSC1PuXok2", "email" : "eeeeeeee", "username" : "dddddddddddd" }, "__v" : 0 }
+> 

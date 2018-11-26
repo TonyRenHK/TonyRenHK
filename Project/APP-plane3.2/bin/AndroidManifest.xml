@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="cn.m15.xys"
+      android:versionCode="1"
+      android:versionName="1.0">
+      <uses-sdk android:minSdkVersion="15" />
+      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />  
+      
+<!--        android:theme = "@style/Transparent"      -->  
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".startActivity"
+                  android:label="@string/app_name"
+                  android:theme = "@style/Transparent">    
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+	<activity android:name=".ViewAcitvity" ></activity>
+	<activity android:name=".PinBall" ></activity>
+	<activity android:name=".SlyButton" 
+	    android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+	</activity>
+	
+	<activity android:name=".SlyButtonView" ></activity>
+	<activity android:name=".SurfaceViewAcitvity" 
+	    android:theme="@android:style/Theme.NoTitleBar.Fullscreen">   
+	</activity>
+	<activity android:name=".Main" 
+	    android:configChanges="orientation|keyboardHidden">
+	    
+	</activity>
+	<activity android:name=".MyBarrage" 
+	    android:configChanges="orientation|keyboardHidden">
+	</activity>
+	<activity android:name=".MainActivity">
+	</activity>
+	<activity android:name=".Card" ></activity>
+	<activity android:name=".DataUtil" ></activity>
+	<activity android:name=".GameView" ></activity>
+	
+	<service android:name=".FxService" 
+	    android:theme = "@style/Transparent">
+	</service>
+	
+    
+    </application>
+
+
+</manifest> 

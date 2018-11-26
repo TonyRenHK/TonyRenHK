@@ -1,0 +1,646 @@
+<apex:page docType="html-5.0"  showChat="true" sidebar="false" showHeader="false">
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>Super Manage All Page</title>
+            
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Font-Awesome/css/font-awesome.css" />
+            <link rel="stylesheet" href="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/awesome-bootstrap-checkbox-build.css" />
+            <link rel="stylesheet" href="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Bootstrap/bootstrap-datetimepicker/bootstrap-datetimepicker.css" />
+            
+            
+            
+            
+            
+            <script  src="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Floating-Share-Buttons/page.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Bootstrap/bootstrap-datetimepicker/moment-with-locales.js"></script>
+            <script src="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Bootstrap/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+            
+            <apex:includeScript value="{!URLFOR($Resource.Slider, 'Swiper-master/dist/js/swiper.jquery.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.Slider, 'Swiper-master/dist/js/swiper.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.FancyBox, '/swipebox-master/src/js/jquery.swipebox.js')}"/>
+                        
+            <style>
+            .imgopacity {
+                opacity: 0.5;
+                filter: alpha(opacity=50); /* For IE8 and earlier */
+            }
+            .upload-drop-zone {
+                height: 200px;
+                border-width: 2px;
+                margin-bottom: 20px;
+            }
+            
+            /* skin.css Style*/
+            .upload-drop-zone {
+                color: #ccc;
+                border-style: dashed;
+                border-color: #ccc;
+                line-height: 200px;
+                text-align: center
+            }
+            
+            .upload-drop-zone.drop {
+                color: #222;
+                border-color: #222;
+            }
+            
+            .displayNone{
+                display:none;
+            }
+            
+            </style>
+            
+            <script type="text/javascript">
+                
+             $(document).ready(function(){
+                $('.datetimepickercls').datetimepicker({ 
+                    format: 'YYYY/MM/DD',
+                    ignoreReadonly: true
+                });
+            });
+            
+            
+         
+            function SaveFun(){
+                //$('#teamworkcomId').removeClass('displayNone');//console.log('Testinssssssssssg');
+                // window.resizeTo(9,screen.height-500)  
+                // window.focus();//window.resizeBy(0, 200);//window.focus();
+            }
+            
+            function clickchatter(that){
+                
+                var Flagvar=that.getAttribute('status');
+                if(Flagvar=='Close'){
+                    that.setAttribute("status", "On");
+                    $('#rightPart').addClass( "col-md-9" );
+                    $('#leftPart').addClass( "col-md-3" );
+                    $('#ChatterImg').removeClass("imgopacity");
+                    //$("#leftPart").fadeIn("slow");
+                    $('#chatterID').removeClass("displayNone");
+                    $("#leftPart").toggle();
+                }else{
+                    that.setAttribute("status", "Close");
+                    //$("#leftPart").fadeOut('fast');
+                    $("#leftPart").toggle();
+                    $('#rightPart').removeClass( "col-md-9" );
+                    $('#leftPart').removeClass( "col-md-3" );
+                    $('#chatterID').addClass("displayNone");
+                    $('#ChatterImg').addClass("imgopacity");
+                }
+                
+                
+            }
+            
+            function clickPhotoSideBar(that){
+                var Flagvar=that.getAttribute('status');
+                if(Flagvar=='Close'){ // Open
+                    that.setAttribute("status", "On");
+                    $('#rightPart').addClass( "col-md-9" );
+                    $('#leftPart').addClass( "col-md-3" );
+                    $('#ChatterImg').removeClass("imgopacity");
+                    $('#PhotoSideBarID').removeClass("displayNone");
+                    //$("#leftPart").fadeIn("slow");
+                    $("#leftPart").toggle();
+                }else{  //Close
+                    that.setAttribute("status", "Close");
+                    //$("#leftPart").fadeOut('fast');
+                    $("#leftPart").toggle();
+                    $('#rightPart').removeClass( "col-md-9" );
+                    $('#leftPart').removeClass( "col-md-3" );
+                    $('#PhotoSideBarID').addClass("displayNone");
+                    $('#ChatterImg').addClass("imgopacity");
+                }
+            }
+            
+               
+            function AddNewForm(){
+                //$('#navDiv').append('<li><a href="#3"><button class="close closeTab" type="button" >×</button>Compose</a></li>');//console.log('Testing');
+                //$('#menu2ID').find('input').val('');
+                var QuotationType=$( "#seltype" ).val();
+            }
+            
+            function RemoveTab(){
+                console.log('Testing');
+            }
+            
+            
+            
+            </script>
+            
+        </head>
+        
+        <body>
+            
+            <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="right:0px; top:50px;">
+                <a href="#"  ><img   src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/up-arrow.png"  style="width:34px;height:34px;"/></a>
+                
+                <a onclick="clickPhotoSideBar(this);" status="Close"><img class="imgopacity" id="ChatterImg" src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/cloud-computing.png"  style="width:34px;height:34px;"/></a>
+                
+                <a onclick="clickchatter(this);" status="Close"><img class="imgopacity" id="ChatterImg" src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/share.png"  style="width:34px;height:34px;"/></a>
+                <a href="#"  ><img src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/message.png"  style="width:34px;height:34px;"/></a>
+                <a href="#"  ><img src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/settings.png"  style="width:34px;height:34px;"/></a>
+            </div>
+            
+            <div class="container-fluid">
+                <div class="row" style=" padding-top: 0.5em; padding-left: 5em; padding-right: 2em;"   >
+                    <div  id="rightPart">
+                        <div class="row" >
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Super Manage All Page</div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="sel1">Select Quotation Type:</label>
+                                                <select class="form-control" id="seltype">
+                                                    <option>Quotation A</option>
+                                                    <option>Quotation B</option>
+                                                    <option>Quotation C</option>
+                                                    <option>Quotation D</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            
+                                            <button onclick="AddNewForm()" type="button"  class="btn-sm  searchbtn" style="display: inline-block;  font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #337ab7;border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>New Form
+                                            </button> 
+                                            
+                                        </div>
+                                        <div class="col-md-2">
+                                            
+                                            <button  type="button" onclick="SaveFun();"  class="btn-sm searchbtn" style="display: inline-block;  font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #5cb85c; border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Save
+                                            </button> 
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" >
+                            <ul class="nav nav-tabs" id="navDiv">
+                                <li class="active"><a data-toggle="tab" href="#home">OverView</a></li>
+                                <li><a data-toggle="tab" href="#menu1">Details</a></li>
+                                <li><a data-toggle="tab" href="#menu2">Quotation -A <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                                <li><a data-toggle="tab" href="#menu3">Quotation -B<span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                                <li><a data-toggle="tab" href="#menu4">Quotation -C  <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                                <li><a data-toggle="tab" href="#menu5">Quotation -D <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                   
+                                       <div style="padding-top:3em;padding-right:5em;"  id="teamworkcomId">
+                                        <c:TeamworkCom ></c:TeamworkCom>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div id="menu1" class="tab-pane fade">
+                                  
+                                </div>
+                                <div id="menu2" class="tab-pane fade">
+                                    <div style="padding-top:3em;padding-right:5em;" id="menu2ID" >
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="text" value="Artisanal kale" id="example-text-input" />
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-xs-3">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="password" value="hunter2" id="example-password-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="number" value="42" id="example-number-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="month" value="2011-08" id="example-month-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="week" value="2011-W33" id="example-week-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                
+                                                <div class="form-group row">
+                                                    <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="time" value="13:45:00" id="example-time-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="form-group row">
+                                                    <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
+                                                    <div class="col-xs-10">
+                                                        <input class="form-control" type="color" value="#563d7c" id="example-color-input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="form-group">
+                                                    <label for="sel1">Select Type:</label>
+                                                    <select class="form-control" id="sel1">
+                                                        <option>A</option>
+                                                        <option>B</option>
+                                                        <option>C</option>
+                                                        <option>D</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <div class="radio">
+                                                    <input type="radio" name="radio1" id="radio2" value="option2" />
+                                                    <label for="radio2">
+                                                        Big
+                                                    </label>
+                                                </div> 
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <div class="checkbox checkbox-primary">
+                                                    <input id="checkbox2" class="styled" type="checkbox" />
+                                                    <label for="checkbox2">
+                                                        T-Shirt Hell
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox checkbox-primary">
+                                                    <input id="checkbox3" class="styled" type="checkbox" />
+                                                    <label for="checkbox3">
+                                                        Printed T-shirt
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox checkbox-primary">
+                                                    <input id="checkbox4" class="styled" type="checkbox" />
+                                                    <label for="checkbox4">
+                                                        Headline Shirts
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                                <div id="menu3" class="tab-pane fade">
+                                    
+                                    <div  style="padding-top:3em;padding-right:5em;">
+                                        
+                                        
+                                        <table class="table">
+                                            
+                                            <thead>
+                                                <tr>
+                                                    <th> <input type="text" class="form-control" id="inputEmail3" placeholder="Style Number" style="height: 120%;"/></th>
+                                                    <th> <input type="text" class="form-control" id="inputEmail3" placeholder="Description" style="height: 120%;"/></th>
+                                                    <th> <input type="text" class="form-control" id="inputEmail3" placeholder="Origin" style="height: 120%;"/></th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tr>
+                                                <td> <input type="text"  class="form-control" id="inputEmail3" placeholder="Box Size" style="height: 120%;"/></td>
+                                                <td><input type="text" class="form-control"  id="inputEmail3" placeholder="Tariff Code" style="height: 120%;"/></td>
+                                                <td><input type="text" class="form-control"  id="inputEmail3" placeholder="Account Code" style="height: 120%;"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td> 
+                                                    <input type="text"  id="inputPassword4" class="form-control"  placeholder="BU Code" style="height: 30px;" />
+                                                    <small id="passwordHelpInline" class="text-muted">
+                                                        Must be 8-20 characters long.
+                                                    </small></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="sel1">Select Type:</label>
+                                                        <select class="form-control" id="sel1">
+                                                            <option>A</option>
+                                                            <option>B</option>
+                                                            <option>C</option>
+                                                            <option>D</option>
+                                                        </select>
+                                                    </div></td>
+                                                <td><div class="radio">
+                                                    <input type="radio" name="radio1" id="radio1" value="option1" />
+                                                    <label for="radio1">
+                                                        Small
+                                                    </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <input type="radio" name="radio1" id="radio2" value="option2" />
+                                                        <label for="radio2">
+                                                            Big
+                                                        </label>
+                                                    </div> </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <div class="checkbox checkbox-primary">
+                                                    <input id="checkbox2" class="styled" type="checkbox" />
+                                                    <label for="checkbox2">
+                                                        T-Shirt Hell
+                                                    </label>
+                                                    </div>
+                                                    <div class="checkbox checkbox-primary">
+                                                        <input id="checkbox3" class="styled" type="checkbox" />
+                                                        <label for="checkbox3">
+                                                            Printed T-shirt
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox checkbox-primary">
+                                                        <input id="checkbox4" class="styled" type="checkbox" />
+                                                        <label for="checkbox4">
+                                                            Headline Shirts
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td> <div class="input-group date datetimepickercls">
+                                                    <input type="text" class="form-control" id="NewTaskStartDate" placeholder="Start Date"  /> <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                                                    </div>
+                                                </td>
+                                                <td><label for="comment">Comment:</label>
+                                                    <textarea class="form-control" rows="5" id="comment"></textarea></td>
+                                            </tr>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="menu4" class="tab-pane fade">
+                                    
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 col-xs-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading clearfix">
+                                                    <i class="icon-calendar"></i>
+                                                    <h3 class="panel-title">Inputs</h3>
+                                                </div>
+                                                
+                                                <div class="panel-body">
+                                                    
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Default input field</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="regular" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Password</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" type="password" name="pass"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">With placeholder</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" type="text" name="placeholder" placeholder="placeholder"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Disabled field</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="disabled" disabled="disabled" value="disabled" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Read only field</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" type="text" name="readonly" readonly="" value="read only"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Help text</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="regular" class="form-control"/>
+                                                            <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Predefined value</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="regular" value="http://" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">With icon</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="regular" class="form-control"/>
+                                                            <i class="icon-pencil input-icon"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="labelfor" class="col-md-2 control-label">Clickable label</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" name="labelfor" id="labelfor" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">Column sizing</label>
+                                                        <div class="col-md-10">
+                                                            <div class="row">
+                                                                <div class="col-xs-3">
+                                                                    <input type="text" class="form-control" placeholder=".col-xs-3"/>
+                                                                </div>
+                                                                <div class="col-xs-5">
+                                                                    <input type="text" class="form-control" placeholder=".col-xs-5"/>
+                                                                </div>
+                                                                <div class="col-xs-4">
+                                                                    <input type="text" class="form-control" placeholder=".col-xs-4"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-success">
+                                                        <label class="col-md-2 control-label">Input success</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control" id="inputSuccess" placeholder="Input Success"/>
+                                                            <i class="icon-pencil input-icon success"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-warning">
+                                                        <label class="col-md-2 control-label">Input warning</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control" id="inputWarning" placeholder="Input Warning"/>
+                                                            <i class="icon-pencil input-icon warning"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group has-error">
+                                                        <label class="col-md-2 control-label">Input error</label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control" id="inputError" placeholder="Input Error"/>
+                                                            <i class="icon-pencil input-icon error"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="menu5" class="tab-pane fade">
+                                    
+                                     <div class="row">
+                                         <div class="col-xs-5">
+                                              <label for="comment">Name:</label>
+                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-10">
+                                            <div class="col-md-10">
+                                                <input type="text" name="regular" class="form-control"/>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-xs-10">
+                                            <label for="comment">Description:</label>
+                                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <div style="display:none;" id="leftPart">
+                        <div class="displayNone" id="PhotoSideBarID">
+                            <!---<c:PhotoSideBar />--->
+                        </div>
+                        <div class="displayNone" id="chatterID" >
+                            <!---<chatter:feed entityId="{!$User.Id}"/>-->
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </body>
+    </html>
+</apex:page>

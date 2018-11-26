@@ -1,0 +1,26 @@
+console.log(window.location.hash);
+VM185:1 #files
+undefined
+console.log(window.location.hash);
+VM186:1 #files%2FArchives
+undefined
+decodeURIComponent('#files%2FArchives').slice(1).split('=');
+["files/Archives"]
+typeof decodeURIComponent('#files%2FArchives').slice(1).split('=');
+"object"
+
+//http://tutorialzine.com/2014/09/cute-file-browser-jquery-ajax-php/
+
+
+
+$.get('scan.php', function(data) { console.log(data);});
+
+
+
+
+
+
+
+
+
+

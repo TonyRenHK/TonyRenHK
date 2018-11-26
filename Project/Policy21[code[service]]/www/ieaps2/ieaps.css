@@ -1,0 +1,61 @@
+
+.orgbor {
+	border:1px solid #ffffff;
+}
+.right {
+	text-align:right;
+
+}
+.left {
+	text-align:left;
+}
+.cen {
+	text-align:center;
+}
+.h2strong {
+font-weight:bold;
+	text-align:left;
+}
+.qno {
+	width:1100;
+}
+.qno2 {
+	width:1100;
+	border:2px solid ;
+}
+.qno1{
+
+	border:2px solid ;
+}
+.nocol {
+	background-color:#00ff00;
+}
+
+.nocol1 {
+	background-color:#FF99FF;
+}
+.nocol2 {
+	background-color:#00ffff;
+}
+.nocol3 {
+	background-color:7FFFD4;
+}
+
+
+.nocol4 {
+	background-color:#C0C0C0;
+}
+.nocol5 {
+	background-color:#FF99FF;
+}
+
+.exblue {
+color:rgb(0,0,255);
+}
+
+.exred {
+color:red;
+}
+
+
+

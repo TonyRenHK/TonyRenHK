@@ -1,0 +1,123 @@
+<apex:page docType="html-5.0"  showChat="true" sidebar="false" showHeader="false">
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>Super Manage All Page</title>
+            
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Bootstrap/bootstrap-combined.min.css" />
+            
+            <script  src="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Library/Floating-Share-Buttons/page.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            
+            <script src="https://cdn.rawgit.com/TonyRenHK/TonyRenHK/master/Javascript/OpenSource/js/Add-On-app.js"></script>
+            <style>
+                .imgopacity {
+                opacity: 0.5;
+                filter: alpha(opacity=50); /* For IE8 and earlier */
+                }
+            </style>
+            
+            <script type="text/javascript">
+            $(document).ready(function(){
+                
+            });
+            
+            function AddNewForm(){
+            
+            }
+            
+            function RemoveTab(){
+                console.log('Testing');
+            }
+            
+            function clickchatter(that){
+                
+                var Flagvar=that.getAttribute('status');
+                if(Flagvar=='Close'){
+                    that.setAttribute("status", "On");
+                    $('#rightPart').addClass( "col-md-9" );
+                    $('#leftPart').addClass( "col-md-3" );
+                    $('#ChatterImg').removeClass("imgopacity");
+                    //$("#leftPart").fadeIn("slow");
+                    $("#leftPart").toggle();
+                }else{
+                    that.setAttribute("status", "Close");
+                    //$("#leftPart").fadeOut('fast');
+                    $("#leftPart").toggle();
+                    $('#rightPart').removeClass( "col-md-9" );
+                    $('#leftPart').removeClass( "col-md-3" );
+                    $('#ChatterImg').addClass("imgopacity");
+                }
+                
+                
+            }
+            </script>
+            
+        </head>
+        
+        <body>
+            <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="right:0px; top:50px;">
+                <a href="#"  ><img  id="ChatterImg" src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/Up.png"  style="width:34px;height:34px;"/></a>
+                <a onclick="clickchatter(this);" status="Close"><img class="imgopacity" id="ChatterImg" src="https://raw.githubusercontent.com/TonyRenHK/TonyRenHK/master/Image/share-icon.png"  style="width:34px;height:34px;"/></a>
+            </div>
+            
+            <div class="container-fluid">
+                <div class="row" style=" padding-top: 0.5em; padding-left: 5em; padding-right: 2em;"   >
+                    <div  id="rightPart">
+                        <div class="row" >
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Super Manage All Page</div>
+                                <div class="panel-body">
+                                    <button onclick="AddNewForm()" type="button"  class="btn-sm  searchbtn" style="display: inline-block;  font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #337ab7;border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>New Form
+                                    </button> 
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row" >
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                                <li><a data-toggle="tab" href="#menu1">Menu 1 <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                                <li><a data-toggle="tab" href="#menu2">Menu 2  <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                                <li><a data-toggle="tab" href="#menu3">Menu 3  <span onclick="RemoveTab();" class="glyphicon glyphicon-remove" aria-hidden="true"></span> </a></li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div id="home" class="tab-pane fade in active">
+                                    <h3>HOME</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                                <div id="menu1" class="tab-pane fade">
+                                    <h3>Menu 1</h3>
+                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                                <div id="menu2" class="tab-pane fade">
+                                    <h3>Menu 2</h3>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                </div>
+                                <div id="menu3" class="tab-pane fade">
+                                    <h3>Menu 3</h3>
+                                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <div style="display:none;" id="leftPart">
+                        <chatter:feed entityId="{!$User.Id}"/>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+        </body>
+    </html>
+</apex:page>

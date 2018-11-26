@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+		<title>猪猪七夕节快乐</title>
+	</head>
+	<style type="text/css">
+		body,html {position:relative;margin: 0; height: 100%; font-family:sans-self;overflow: hidden;}
+		.loading-page { position:absolute; left: 0; top: 0; right: 0; bottom: 0; background-image: url(img/welcome.jpg); background-size: 100% 100%;
+			-webkit-transition: opacity 1s;
+			z-index: 10;
+		}
+		
+		.qixi-words { z-index: 20; position: absolute; left: 50%; bottom: 0; -webkit-transform: translateX(-50%) translateY(-200px); 
+			text-align: center; font-size: 24px; -webkit-transition: -webkit-transform 1s;
+			background-color: rgba(0,0,0,0.5); color: #fff; padding: 0 10px;
+		}
+		.qixi-words p { white-space: nowrap; margin: 0; line-height: 1.6;}
+		.qixi-words span { font-weight: bold;}
+		.qixi-words.start {-webkit-transform: translateX(-50%) translateY(-50px); }
+		.color-fix { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.5);}
+		.content-wrap { position: relative; height: 100%;}
+		.flex-row, .flex-col {
+		    display:block;
+		}
+		
+		.flex-row { }
+		.flex-col { flex-direction: column;}
+		.flex-item { flex: 1;}
+		
+		.img-item { 
+			float: left;
+			box-sizing: border-box; 
+			border: 3px solid rgba(222,222,222,0.5);
+		}
+		
+		.picture-shower { z-index: -20; -webkit-transform: scale(0); 
+			-webkit-transition: opacity 0.5s, -webkit-transform 0.5s; 
+			position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; background-color: #000;
+		}
+		.picture-shower.show { z-index: 10;-webkit-animation: showPic 0.5s forwards;}
+		.pictuer-inner { position: absolute; left: 50%; top: 0; height: 100%; -webkit-transform: translateX(-50%);}
+		
+		@-webkit-keyframes showPic{
+			0%{opacity: 0; -webkit-transform: translateY(-60px);}
+			80%{opacity: 1; -webkit-transform: translateY(5px);}
+			100%{opacity: 1; -webkit-transform: translateY(0px);}
+		}
+		.mp3-player {
+			z-index: -30; 
+			opacity: 0;
+		}
+		.pre-load-img {
+			z-index: -99; 
+			opacity: 0;
+		}
+	</style>
+	<body>
+		<div class="loading-page">
+			<div class="color-fix"></div>
+		</div>
+		<div class="qixi-words">
+			<p>我们在一起的 <span class="day" id="dayday">12</span> 天</p>
+			<p><span class="hour">00</span>:<span class="min">00</span>:<span class="second">00</span></p>
+		</div>
+		<div class="content-wrap flex-col">
+			<div class="flex-item flex-row">
+				<div class="flex-item img-item" data-img="./img/2.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/3.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/4.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/5.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/6.jpg"></div>
+			</div>
+			<div class="flex-item flex-row">
+				<div class="flex-item img-item" data-img="./img/7.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/8.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/9.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/10.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/11.jpg"></div>
+			</div>
+			<div class="flex-item flex-row">
+				<div class="flex-item img-item" data-img="./img/12.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/13.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/14.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/15.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/16.jpg"></div>
+			</div>
+			<div class="flex-item flex-row">
+				<div class="flex-item img-item" data-img="./img/17.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/18.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/19.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/20.jpg"></div>
+				<div class="flex-item img-item" data-img="./img/21.jpg"></div>
+			</div>
+		</div>
+		<div class="picture-shower">
+			<img class="pictuer-inner" src="img/welcome.jpg" />
+		</div>
+		<audio class="mp3-player" autoplay="autoplay" loop="loop">
+		  <source src="loveMusic.mp3" type="audio/mpeg">
+		Your browser does not support the audio tag.
+		</audio>
+		<div class="pre-load-img">
+			<img src="img/2.jpg" />
+			<img src="img/3.jpg" />
+			<img src="img/4.jpg" />
+			<img src="img/5.jpg" />
+			<img src="img/6.jpg" />
+			<img src="img/7.jpg" />
+			<img src="img/8.jpg" />
+			<img src="img/9.jpg" />
+			<img src="img/10.jpg" />
+			<img src="img/11.jpg" />
+			<img src="img/12.jpg" />
+			<img src="img/13.jpg" />
+			<img src="img/14.jpg" />
+			<img src="img/15.jpg" />
+			<img src="img/16.jpg" />
+			<img src="img/17.jpg" />
+			<img src="img/18.jpg" />
+			<img src="img/19.jpg" />
+			<img src="img/20.jpg" />
+			<img src="img/21.jpg" />
+		</div>
+	</body>
+	<script type="text/javascript" src="js/zepto.min.js" ></script>
+	<script type="text/javascript">
+        document.documentElement.style.height = window.innerHeight + 'px';
+        
+        
+        document.body.addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        });
+        //$(".img-item").width(($(window).width() - 30) / 5);
+        $(".img-item").width("20%");
+        //$(".img-item").css({"padding-top": ($(window).height() - 30) / 5});
+        $(".flex-row").css({"height": "25%"});
+        $(".img-item").css({"height": "100%"});
+        
+		var day = $('.day');
+		(function(){
+			var imgItem = $('.img-item');
+			var pictureShow = $('.picture-shower');
+			var picterInner = $('.pictuer-inner');
+			
+			var touchable = true;
+			
+			setInterval("setTime()", 1000);
+
+			getD();
+
+			imgItem.each(function(){
+				$(this).on('click',function(){
+					if(touchable){
+						picterInner[0].src = $(this).data('img');
+						touchable =false;
+						pictureShow.addClass('show');
+						
+						setTimeout(function(){
+							touchable = true;
+						},500);
+                        $(".qixi-words").hide();
+					}
+				});
+			});
+		
+			pictureShow.on('click',function(){
+				pictureShow.removeClass("show");
+                $(".qixi-words").show();
+			});
+			
+			
+			window.onload = function(){
+				$(".loading-page").css("opacity",0.8);
+				$('.qixi-words').addClass('start');
+				setTimeout(function(){$(".loading-page").css("z-index",-10);},1000);
+			}
+		}());
+		
+		function getD() {
+			var loveBeginDate = 1420041600000;
+			var loveNowDate = new Date().getTime();
+			$('#dayday').html(parseInt((loveNowDate - loveBeginDate) / 1000 / 60 / 60 / 24));
+		}
+		function setTime() {
+			var hour = $('.hour');
+			var min = $('.min');
+			var sec = $('.second');
+			var backdate = new Date();
+			hour.html(lessThanTen(backdate.getHours()));
+			min.html(lessThanTen(backdate.getMinutes()));
+			sec.html(lessThanTen(backdate.getSeconds()));
+		}
+		function lessThanTen(num) {
+			var num = parseInt(num);
+			if(num < 10) {
+				return "0" + num + "";
+			}
+			else {
+				return num;
+			}
+		}
+	</script>
+</html>

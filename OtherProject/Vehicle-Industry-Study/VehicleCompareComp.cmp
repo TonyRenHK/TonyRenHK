@@ -1,0 +1,281 @@
+<aura:component controller="VehicleVersionController"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <ltng:require styles="/resource/1465639409000/ASI_JS_Bootstrap_V3_3_6/ASI_JS_Bootstrap_V3_3_6/dist/css/bootstrap.min.css,
+                          /resource/1465878109000/ASI_JS_JQuery_V1_9_1/css/jquery-ui.css,
+                          /resource/1465873790000/noUiSlider/nouislider.min.css" 
+                  scripts="/resource/1465786063000/modal/jquery-2.2.4.js,
+                           /resource/1465878109000/ASI_JS_JQuery_V1_9_1/js/jquery-ui.min.js,
+                           /resource/1465639409000/ASI_JS_Bootstrap_V3_3_6/ASI_JS_Bootstrap_V3_3_6/dist/js/bootstrap.js,
+                           /resource/1465873790000/noUiSlider/nouislider.min.js"   
+                  afterScriptsLoaded="{!c.doInit}"   />
+         <ltng:require styles="/resource/1465970842000/slds/assets/styles/salesforce-lightning-design-system.css"/>
+    <ltng:require styles="/resource/1465970842000/slds/assets/styles/salesforce-lightning-design-system-vf.css"/>
+     <ltng:require styles="/resource/1465970842000/slds/assets/styles/salesforce-lightning-design-system-ltng.css" />
+    
+    
+    <aura:attribute type="VehicleVersionController" name="counts" />
+    <aura:attribute type="Object" name="displayItems" />
+    
+    <aura:attribute type="Object" name="VersionListMap" />
+    <aura:attribute type="String[]" name="CompareProductIdList" />
+    <aura:attribute type="Integer[]" name="PriceList" />
+    <aura:attribute type="Integer" name="CurrentOrder" />
+    
+    
+    <aura:handler name="change" value="{!v.items}" action="{!c.itemsChange}"/>
+    
+    
+    
+    
+    <div class="container">
+        <div class="row" style= " margin-top: 1em">
+            <br/>
+            
+        </div>
+        <div class="row" style= " margin-top: 1em">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"> 
+                
+                <div style="display: inline;text-align: right; float: left;">
+                    <input type="text" class="form-control" id="SearchPartId" style="width:90%"/> 
+                </div>
+                
+                <div style="display: inline;text-align: left;float: left;">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button>
+                </div>
+                
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        
+        <div class="row" style= " margin-top: 1em">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"> 
+                <div style="float: left; width: 125px; text-align: right; display: inline;">
+                    <input id="RangeDivPart1"  value="0" min="0" max="50" step="0.5" type="range" style="  width:9em" onchange='{!c.rangechange}' />
+                </div>
+                
+                <div style=" padding-right: 2em; float: left; text-align: left; display: inline;">
+                    <input id="RangeDivPart2" value="100" min="50" max="100" step="0.5" type="range" style=" width:9em" onchange='{!c.rangechange}'  />
+                </div>
+                
+                
+                
+            </div>
+            <div class="col-md-4"></div>
+            
+        </div>
+        
+        <div class="row" style= " margin-top: 1em">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="PriceDiv"></div>
+            <div class="col-md-4"></div>
+            
+        </div>  
+        <div class="row" style= " margin-top: 1em">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">1/2 Page</div>
+            <div class="col-md-4"></div>
+        </div>
+        
+        <div class="row" style= " margin-top: 1em">
+            <div class="col-md-6"><button id="PreviousDiv" type="button" class="btn btn-default" onclick="{!c.PressPrevious}"   >Previous</button></div>
+            <div class="col-md-6"><button id="NextDiv" type="button" class="btn btn-default" style="float: right;" onclick="{!c.PressNext}"   >Next</button></div>
+        </div>
+        
+        
+        
+        <div class="border row" style=" margin-top: 1em">
+        <aura:iteration var="dItems" items="{!v.displayItems}">
+              <div class="border col-md-3"> 
+                    <div class="panel panel-default" >
+                        <div class="panel-body">
+                           <img src='{!dItems.data.Image__c}' alt="Car" style="width:14.8em;height:8em" />
+                            <br/>
+                            <ui:outputText value="{!dItems.data.Name}"/>
+                            <br/>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.Pressbooking}" id="{!dItems.Id+'_btn'}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </button> 
+                           <!--
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressOrder}" id="{!dItems.Id+'_Order'}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> </button>  
+                          -->
+  							<div style=" display: inline-block; position: relative;"><span class="glyphicon glyphicon-shopping-cart" style="display: inline-block; position: absolute; left: 0.50em; top: 30%;" aria-hidden="true"></span><input  class="btn btn-default" type="button" onclick="{!c.PressOrder}" id="{!dItems.data.Id+'_order'}"  value="Order" style="padding-left: 2em;">  </input></div>
+                            
+                            <br/>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressFindLocater}" id="{!dItems.Id+'_Locater'}"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> </button>  
+                            
+                            
+  							<div style=" display: inline-block; position: relative;"><span class="glyphicon glyphicon-zoom-in" style="display: inline-block; position: absolute; left: 0.50em; top: 30%;" aria-hidden="true"></span><input  class="btn btn-default" type="button" onclick="{!c.PressCompare2}" id="{!dItems.data.Id+'_Com'}"  value="Compare" style="padding-left: 2em;">  </input></div>
+                            
+                             <!--
+                          <button data-id="{!dItems.Id+'Yu'}" class="btn btn-default" aura:id="{!dItems.Id}" title="booking" onclick="{!c.PressCompare2}" id="{!dItems.data.Id+'_Com'}"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>  
+                           
+                            <div id="{!dItems.Id+'Yu'}" >
+                                <ui:button class="btn btn-default" aura:id="{!dItems.Id}" press="{!c.PressCompare2}"  >
+                                    <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                                </ui:button>
+                            </div>
+                            -->
+
+                        </div>
+                  </div>
+            </div>
+        </aura:iteration>
+        </div>
+          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--
+        <div class="row" style= " margin-top: 1em">
+            <div id="ListView"></div>
+        </div>
+        
+        <div class="border row">
+            <aura:iteration items="1,2,3,4" var="item">
+                <div class="border col-md-3"> 
+                    <div class="panel panel-default" >
+                        <div class="panel-body">
+                            
+                            <div id="{!item+'_div'}"></div>
+                            <br/>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.Pressbooking}" id="{!item+'_btn'}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </button> 
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressOrder}" id="{!item+'_Order'}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> </button>  
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressFindLocater}" id="{!item+'_Locater'}"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> </button>  
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressCompare}" id="{!item+'_Compare'}"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>  
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>
+        
+        
+        <div class="border row">
+            <aura:iteration items="5,6,7,8" var="item">
+                <div class="border col-md-3"> 
+                    <div class="panel panel-default" >
+                        <div class="panel-body">
+                            
+                            <div id="{!item+'_div'}"></div>
+                            <br/>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.Pressbooking}" id="{!item+'_btn'}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </button> 
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressOrder}" id="{!item+'_Order'}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> </button> 
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressFindLocater}" id="{!item+'_Locater'}"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> </button> 
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressCompare}" id="{!item+'_Compare'}"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>  
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>
+        
+        
+        <div class="border row">
+            <aura:iteration items="9,10,11,12" var="item">
+                <div class="border col-md-3"   > 
+                    <div class="panel panel-default"   aura:id="{!item+'_auradiv'}" >
+                        <div class="panel-body" id="{!item+'_Alldiv'}" >
+                            
+                            <div id="{!item+'_div'}"></div>
+                            <br/>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.Pressbooking}" id="{!item+'_btn'}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> </button>
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressOrder}" id="{!item+'_Order'}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> </button>  
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressFindLocater}" id="{!item+'_Locater'}"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span> </button> 
+                            
+                            <button class="btn btn-default"  title="booking" onclick="{!c.PressCompare}" id="{!item+'_Compare'}"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>
+        -->
+        
+        
+        <div class="row" style= " margin-top: 1em">
+            <div id="CompareTable"></div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="slds">
+            
+            <div aria-hidden="true" role="dialog" class="slds-modal slds-modal--large slds-fade-in-hide" aura:id="modaldialog" >
+                
+                <div class="slds-modal__container" >
+                    <div class="slds-modal__header" style="border-style: solid;border-width: medium;">
+                        <h2 class="slds-text-heading--medium">List Of Opportunities Closed Won</h2>
+                        <button class="slds-button slds-button--icon-inverse slds-modal__close" onclick="{!c.hideModal}">
+                            <c:svg1 class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/1465970842000/slds/assets/icons/action-sprite/svg/symbols.svg#close"/>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                    </div>
+                    <div class="slds-modal__content">
+                        <div>
+                            bODY
+                        </div>
+                    </div>
+                    
+                    <div class="slds-modal__footer">
+                        <div class="slds-x-small-buttons--horizontal">
+                            <button class="slds-button slds-button--neutral" onclick="{!c.hideModal}">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="slds-backdrop slds-backdrop--hide" aura:id="backdrop">
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        
+        
+        
+        <div class="modal fade" id="ModalPart" role="dialog">
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="modalTitle" ></h4>
+                    </div>
+                    <div class="modal-body" id="modalBody" >
+                        <div id="modalbodyPart"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="modalbutton" type="button" class="btn btn-default" data-dismiss="modal"  > <div id="modalbuttonContent" ></div> </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    
+</aura:component>

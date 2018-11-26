@@ -1,0 +1,185 @@
+
+	$host="localhost";
+	$ser="nondomesticuser";
+	$pass="Policy21!!!!";
+	$db="nondomestic";
+
+
+
+
+
+
+nondomestic
+
+
+update nondomesticsc set flag = NULL;
+
+
+
+nondomesticdb
+nondomesticdbbk
+nondomesticsc
+nondomesticstatus
+
+
+
+
+
+CREATE TABLE `nondomesticsc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sc` varchar(45) DEFAULT NULL,
+`scx` varchar(45) DEFAULT NULL,
+`flag` varchar(45) DEFAULT NULL,
+`status` varchar(45) DEFAULT NULL,
+`eno` varchar(45) DEFAULT NULL,
+`nam` varchar(45) DEFAULT NULL,
+`assign` text,
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+CREATE TABLE `nondomesticstatus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sc` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `st` varchar(45) DEFAULT NULL,
+  `ed` varchar(45) DEFAULT NULL,
+  `apd` varchar(45) DEFAULT NULL,
+  `aph` varchar(45) DEFAULT NULL,
+  `apm` varchar(45) DEFAULT NULL,
+  `eno` varchar(45) DEFAULT NULL,
+  `nam` varchar(45) DEFAULT NULL,
+  `sttt` varchar(45) DEFAULT NULL,
+  `edtt` varchar(45) DEFAULT NULL,
+  `remark` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO `nondomesticsc` (`id`, `sc`, `scx`) VALUES
+('','SC250010','97118426'),
+('','SC150020','92671168'),
+('','SC250030','25078627'),
+('','SC250040','91282069'),
+('','SC250050','98105672'),
+('','SC250060','23119898'),
+('','SC250070','96789389'),
+('','SC250080','31474088'),
+('','SC250090','24895501'),
+('','SC250100','23004300'),
+('','SC250110','21968708'),
+('','SC250120','90417083'),
+('','SC250130','27933661'),
+('','SC250140','21011500'),
+('','SC250150','98009082'),
+('','SC250160','28859525'),
+('','SC250170','98115113'),
+('','SC250180','37937878'),
+('','SC250190','96780608'),
+('','SC250200','24471819'),
+('','SC250210','23842788'),
+('','SC250220','61133267'),
+('','SC250230','28209675'),
+('','SC250240','90549830'),
+('','SC250250','21656348'),
+('','SC250260','61278886'),
+('','SC250270','97470128'),
+('','SC250280','25236128'),
+('','SC250290','24196716'),
+('','SC250300','24012368'),
+('','SC250310','96109482'),
+('','SC250320','27858679'),
+('','SC250330','28510108'),
+('','SC250340','90193312'),
+('','SC250350','26993663'),
+('','SC250360','23501717'),
+('','SC250370','21872977'),
+('','SC250380','96202364'),
+('','SC250390','93458217'),
+('','SC250400','21103083'),
+('','SC250410','23422623'),
+('','SC250420','21011398'),
+('','SC250430','28655640'),
+('','SC250440','90953753'),
+('','SC250450','94766833'),
+('','SC250460','23155950'),
+('','SC250470','23789327'),
+('','SC250480','96328572'),
+('','SC250490','61866727');
+
+
+
+
+
+
+
+sc,eno,com_name,interviewee,position,status,st,ed,q1_1a,q1_1b_1,q1_1b_2,q1_1b_3,q1_1b_4,q1_1b_5,q1_1b_5a,q1_1b_6,q2a,q2a_34,q2b,q3_1,q3_2,q3_3,q3_4,q4_1,q4_1a,q4_2,q4_2a,q4_3,q4_3a,q4_4,q4_4a,q4_5c,q4_5,q4_5a,q5,q5_e,q6_1,q6_2,q6_3,q6_4,q6_5,q6_6,q6_7,q6_7a,q7_1,q7_2,q7_3,q7_4,q7_5,q7_6,q7_7,q7_7a,q8,q8_a,q8_2,q9,q9_1a,q9_1b,q9_2,
+
+
+
+
+
+,'".$_POST["q1_1a"]."','".$_POST["q1_1b_1"]."','".$_POST["q1_1b_2"]."','".$_POST["q1_1b_3"]."','".$_POST["q1_1b_4"]."','".$_POST["q1_1b_5"]."','".$_POST["q1_1b_5a"]."','".$_POST["q1_1b_6"]."','".$_POST["q2a"]."','".$_POST["q2a_34"]."','".$_POST["q2b"]."','".$_POST["q3_1"]."','".$_POST["q3_2"]."','".$_POST["q3_3"]."','".$_POST["q3_4"]."','".$_POST["q4_1"]."','".$_POST["q4_1a"]."','".$_POST["q4_2"]."','".$_POST["q4_2a"]."','".$_POST["q4_3"]."','".$_POST["q4_3a"]."','".$_POST["q4_4"]."','".$_POST["q4_4a"]."','".$_POST["q4_5c"]."','".$_POST["q4_5"]."','".$_POST["q4_5a"]."','".$_POST["q5"]."','".$_POST["q5_e"]."','".$_POST["q6_1"]."','".$_POST["q6_2"]."','".$_POST["q6_3"]."','".$_POST["q6_4"]."','".$_POST["q6_5"]."','".$_POST["q6_6"]."','".$_POST["q6_7"]."','".$_POST["q6_7a"]."','".$_POST["q7_1"]."','".$_POST["q7_2"]."','".$_POST["q7_3"]."','".$_POST["q7_4"]."','".$_POST["q7_5"]."','".$_POST["q7_6"]."','".$_POST["q7_7"]."','".$_POST["q7_7a"]."','".$_POST["q8"]."','".$_POST["q8_a"]."','".$_POST["q8_2"]."','".$_POST["q9"]."','".$_POST["q9_1a"]."','".$_POST["q9_1b"]."','".$_POST["q9_2"]."'
+
+
+
+
+
+
+
+`q1_1a` = '".@$_POST["q1_1a"]."',`q1_1b_1` = '".@$_POST["q1_1b_1"]."',`q1_1b_2` = '".@$_POST["q1_1b_2"]."',`q1_1b_3` = '".@$_POST["q1_1b_3"]."',`q1_1b_4` = '".@$_POST["q1_1b_4"]."',`q1_1b_5` = '".@$_POST["q1_1b_5"]."',`q1_1b_5a` = '".@$_POST["q1_1b_5a"]."',`q1_1b_6` = '".@$_POST["q1_1b_6"]."',`q2a` = '".@$_POST["q2a"]."',`q2a_34` = '".@$_POST["q2a_34"]."',`q2b` = '".@$_POST["q2b"]."',`q3_1` = '".@$_POST["q3_1"]."',`q3_2` = '".@$_POST["q3_2"]."',`q3_3` = '".@$_POST["q3_3"]."',`q3_4` = '".@$_POST["q3_4"]."',`q4_1` = '".@$_POST["q4_1"]."',`q4_1a` = '".@$_POST["q4_1a"]."',`q4_2` = '".@$_POST["q4_2"]."',`q4_2a` = '".@$_POST["q4_2a"]."',`q4_3` = '".@$_POST["q4_3"]."',`q4_3a` = '".@$_POST["q4_3a"]."',`q4_4` = '".@$_POST["q4_4"]."',`q4_4a` = '".@$_POST["q4_4a"]."',`q4_5c` = '".@$_POST["q4_5c"]."',`q4_5` = '".@$_POST["q4_5"]."',`q4_5a` = '".@$_POST["q4_5a"]."',`q5` = '".@$_POST["q5"]."',`q5_e` = '".@$_POST["q5_e"]."',`q6_1` = '".@$_POST["q6_1"]."',`q6_2` = '".@$_POST["q6_2"]."',`q6_3` = '".@$_POST["q6_3"]."',`q6_4` = '".@$_POST["q6_4"]."',`q6_5` = '".@$_POST["q6_5"]."',`q6_6` = '".@$_POST["q6_6"]."',`q6_7` = '".@$_POST["q6_7"]."',`q6_7a` = '".@$_POST["q6_7a"]."',`q7_1` = '".@$_POST["q7_1"]."',`q7_2` = '".@$_POST["q7_2"]."',`q7_3` = '".@$_POST["q7_3"]."',`q7_4` = '".@$_POST["q7_4"]."',`q7_5` = '".@$_POST["q7_5"]."',`q7_6` = '".@$_POST["q7_6"]."',`q7_7` = '".@$_POST["q7_7"]."',`q7_7a` = '".@$_POST["q7_7a"]."',`q8` = '".@$_POST["q8"]."',`q8_a` = '".@$_POST["q8_a"]."',`q8_2` = '".@$_POST["q8_2"]."',`q9` = '".@$_POST["q9"]."',`q9_1a` = '".@$_POST["q9_1a"]."',`q9_1b` = '".@$_POST["q9_1b"]."',`q9_2` = '".@$_POST["q9_2"]."',
+
+
+
+
+
+
+CREATE TABLE `nondomesticsc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sc` varchar(45) DEFAULT NULL,
+`scx` varchar(150) DEFAULT NULL,
+`fullname` varchar(60) DEFAULT NULL,
+`addr` varchar(300) DEFAULT NULL,
+`flag` varchar(45) DEFAULT NULL,
+`status` varchar(45) DEFAULT NULL,
+`eno` varchar(45) DEFAULT NULL,
+`nam` varchar(45) DEFAULT NULL,
+`assign` text,
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `nondomesticsc` (`id`, `sc`, `scx`,`fullname`, `addr`) VALUES
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+{
+	"name": "powertip",
+	"title": "PowerTip",
+	"description": "A jQuery plugin that creates hover tooltips.",
+	"version": "1.2.0",
+	"homepage": "http://stevenbenner.github.io/jquery-powertip/",
+	"author": {
+		"name": "Steven Benner",
+		"url": "http://stevenbenner.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/stevenbenner/jquery-powertip.git"
+	},
+	"bugs": {
+		"url": "https://github.com/stevenbenner/jquery-powertip/issues"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://raw.github.com/stevenbenner/jquery-powertip/master/LICENSE.txt"
+		}
+	],
+	"keywords": [
+		"jquery-plugin",
+		"ecosystem:jquery",
+		"powertip",
+		"jquery",
+		"tooltip",
+		"tooltips",
+		"ui",
+		"browser"
+	],
+	"devDependencies": {
+		"grunt": "~0.4",
+		"grunt-contrib-clean": "~0.6",
+		"grunt-contrib-compress": "~0.13",
+		"grunt-contrib-concat": "~0.5",
+		"grunt-contrib-copy": "~0.7",
+		"grunt-contrib-csslint": "~0.4",
+		"grunt-contrib-cssmin": "~0.12",
+		"grunt-contrib-jshint": "~0.11",
+		"grunt-contrib-qunit": "~0.7",
+		"grunt-contrib-uglify": "~0.9",
+		"grunt-contrib-watch": "~0.6",
+		"grunt-indent": "~0.1",
+		"grunt-jscs": "1.8",
+		"grunt-jsonlint": "~1.0",
+		"grunt-shell": "~1.1"
+	},
+	"scripts": {
+		"test": "grunt travis --verbose"
+	}
+}

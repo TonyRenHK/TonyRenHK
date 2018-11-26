@@ -1,0 +1,74 @@
+<apex:page docType="html-5.0" sidebar="false" showHeader="true" >
+    <head>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.rawgit.com/TonyRenHK/TonyRen_Study_Code/master/Library/Sortable.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script>        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js"></script>
+        
+        
+        <style>
+            
+            </style>
+        
+        <script type="text/javascript">
+         $(document).ready(function(){  
+            var conn = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+            var UserSQL=' Select Id,Name,SmallPhotoUrl, FullPhotoUrl From User limit 12 ';
+            conn.query(UserSQL, function(err, res) {
+                if (err) { return console.error(err); } 
+                userlist=res.records;// 
+                console.log(res.records);
+                drawuserTabele(userlist);
+            });
+            
+            var conn2 = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+            var TaskSQL='Select Id,Name From Milestone1_Task__c limit 6';
+            conn2.query(TaskSQL, function(err2, res) {
+                if (err2) { return console.log(err2); }//
+                console.log(res.records);
+                //drawtasktable(res.records);
+            });
+            
+        });
+        //End of ready
+        
+        function drawuserTabele(userlist){
+            var $blocks = $('.userTable');
+            
+            for(var i=0; i<userlist.length; i++){  //var $item = $('<div/>').append('<div/>').text(userlist[i].Name).addClass('panel panel-default').addClass(classes[Math.floor(Math.random() * classes.length)]);
+                var itemHTML='<div class="userpart panel panel-default"><div class="panel-body">'+userlist[i].Name+'</div></div>'
+               
+                $blocks.append($('<li />').append(itemHTML));
+            }
+              $('.userTable').sortable({
+                handle: '.userpart'
+            });
+
+        }
+        
+        
+        </script>       
+        
+    </head>
+    
+    <body>
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Manage User</div>
+                <div class="panel-body">
+                    <div id="userTable">
+                         <ul class="userTable row"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div  id="TaskPart">
+            
+        </div>
+    </body>  
+</apex:page>

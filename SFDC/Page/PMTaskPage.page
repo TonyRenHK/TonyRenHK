@@ -1,0 +1,93 @@
+<apex:page docType="html-5.0" sidebar="false" showHeader="true" >
+    <head>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js"></script>
+        
+        <script type="text/javascript">
+            var userlist=[];
+        $(document).ready(function(){  
+            var conn = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+            var UserSQL=' Select Id,Name,SmallPhotoUrl, FullPhotoUrl From User limit 12 ';
+            conn.query(UserSQL, function(err, res) {
+                if (err) { return console.error(err); } 
+                userlist=res.records;// console.log(res.records);
+                drawuserTabele(userlist);
+            });
+            
+             var conn2 = new jsforce.Connection({ accessToken: '{!$API.Session_Id}' });
+            var TaskSQL='Select Id,Name From Milestone1_Task__c limit 6';
+            conn2.query(TaskSQL, function(err2, res) {
+                if (err2) { return console.log(err2); }//console.log(res.records);
+                drawtasktable(res.records);
+            });
+            
+        });
+        
+        function drawtasktable(taskList){
+             var innerHTML='<div class="row">';
+            for(var i=0; i<taskList.length; i++){
+                var taskid='task_'+i;//console.log(taskList[i].Name);
+                innerHTML+=' <div id='+ taskid+'  draggable="true"  class="col-md-2" ondrop="drop(event)" ondragover="allowDrop(event)" >  <div class="panel panel-success"> <div class="panel-heading">'+taskList[i].Name+
+                    '</div>'+'<div class="panel-body">Drop Here!</div>'+
+                    ' </div></div>';
+            }
+             innerHTML+='</div>';
+            $('#TaskPart').html(innerHTML);
+        }
+        
+        function drawuserTabele(userlist){
+            var innerHTML='<div class="row">';
+        	for(var i=0; i<userlist.length; i++){
+                var userid='user_'+i;
+                /*
+                innerHTML+=' <div class="col-md-1" draggable="true" ondragstart="drag(event)"  > <img  id='+ userid+'  src='+userlist[i].FullPhotoUrl+' width="50" height="50" >tt</img> '
+                +userlist[i].Name+'</div>';*/
+                
+                 innerHTML+=' <div class="col-md-1"  id='+ userid+'  draggable="true" ondragstart="drag(event)"  >  <button  type="button"  class="btn-sm " style="display: inline-block;  font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center;white-space: nowrap;vertical-align: middle;color: #fff; background-color: #337ab7;border-color: #2e6da4; touch-action: manipulation; cursor: pointer; -webkit-user-select: none; background-image: none;border: 1px solid transparent; border-radius: 4px;" >'
+                +userlist[i].Name+'</button> </div>';
+                
+                //console.log(userlist[i].FullPhotoUrl);
+            }
+            innerHTML+='</div>';
+            $('#userTable').html(innerHTML);
+        }
+        
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        
+        function drag(ev) {//console.log(ev.target.id);
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+        
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            console.log(ev.target);
+            ev.target.appendChild(document.getElementById(data));
+        }
+        </script>
+    </head>
+    
+    <body>
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Manage User</div>
+                <div class="panel-body">
+                <div id="userTable">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div  id="TaskPart">
+            
+        </div>
+    </body>  
+</apex:page>

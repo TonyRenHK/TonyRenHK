@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, mapAcitvity!</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Game platform by HKUST</string>
+    <string name="btn">Enable the icon</string>
+    <string name="floating">Game</string>
+    <string name="stop">Disable the icon</string>
+    <string name="game1">Game 1</string>
+    <string name="game2">Game 2</string>
+    <string name="game3">Game 3</string>
+    <string name="about_us">About Us</string>
+    <string name="share_others">Share</string>
+    <string name="hide_setting">Hide Setting</string>
+    <string name="quit_game">Quit Game</string>
+    
+    <string name="last_score">Your Score：</string>
+    <string name="game_over">Game Over!</string>
+    <string name="time_left">Time left：</string>
+    <string name="best">Highest Score：</string>
+    <string name="score">Current Score：</string>
+    <string name="action_settings">Settings</string>
+    
+</resources>

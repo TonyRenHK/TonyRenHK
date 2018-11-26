@@ -1,0 +1,214 @@
+<apex:page standardStylesheets="false" sidebar="false" docType="html-5.0" showHeader="false">
+<apex:includeScript value="{!$Resource.Angular}"/>
+<apex:stylesheet value="{!URLFOR($Resource.BootStrap3, 'bootstrap-3.1.1-dist/css/bootstrap.min.css')}"/> 
+<div class="row" ng-app="myApp" ng-controller="ItemCtrl" id="mainContainer"> 
+<div class="col-md-8">
+	<fieldset> 
+	<legend>Earthquake finder</legend> 
+	<form ng-submit="refreshMap()">
+		<div class="form-group row">
+			<label class="col-md-1 control-label" for="txtCity">City</label> 
+			<div class="col-md-8">
+				<input id="txtCity" ng-model="city" name="txtCity" type="text" value="{{city}}" placeholder="Enter city name here" class="form-control input-md" /> 
+			</div>
+		</div> 
+		
+		<div class="form-group row">
+			<label class="col-md-8 control-label" for="btnSubmit"></label>
+			<div class="col-md-1">
+				<button id="btnSubmit" ng-click="refreshMap()" class="btnCustom btn-success" name="btnSubmit">Submit</button>
+			</div>
+		</div> 
+	</form>
+	</fieldset>
+	<p class="bg-danger img-rounded" id="errorMsg" ng-if="showError"> {{ErrorMessage}} </p> 
+	<div id="map-canvas"> <p class="text-center">loading map...</p> </div> 
+</div> 
+<div class="col-md-4"> 
+	<h4> Largest earthquakes in 12 months </h4>
+	<table class="table table-hover data-table">
+		<thead> 
+			<tr>
+				<th> Magnitude </th>
+				<th> Date and Time </th>
+			</tr>
+		</thead>
+		<tbody> 
+			<tr class="pointer" ng-repeat="item in last12Month track by item.eqid" ng-click="refreshMapLatLng(item.lat , item.lng)">
+				<td> {{item.magnitude}} </td>
+				<td> {{item.datetime}} </td> 
+			</tr>
+		</tbody>
+	</table> 
+</div> 
+</div> 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAudIfJUhsZGrpju0o931bQ5grllMx7dEM"> </script> 
+<script type="text/javascript">
+
+var geocoder ;
+var map; 
+var mapEle = document.getElementById('map-canvas') ; 
+
+var myApp = angular.module('myApp',[ ]); 
+
+myApp.controller('ItemCtrl', ['$scope','$templateCache','$http', function($scope,$templateCache,$http) {
+$scope.city = 'Natori';
+$scope.showError = false; 
+$scope.ErrorMessage = '';
+$scope.last12Month = [];
+
+geocoder = new google.maps.Geocoder();
+
+$scope.refreshMapLatLng = function (latArg , lngArg) {
+
+var mapOptions = {
+center: { lat: latArg, lng: lngArg},
+zoom: 8
+};
+
+map = new google.maps.Map( mapEle, mapOptions);
+
+var bnds = map.getBounds() ;
+if(bnds)
+{
+var northEast = bnds.getNorthEast() ;
+var southWest = bnds.getSouthWest() ; 
+
+$scope.geoNamesRequest(northEast.lat(),northEast.lng(),southWest.lat(),southWest.lng() ); 
+}
+}
+
+$scope.showErrorMessage = function(msg){
+$scope.showError = true ;
+$scope.ErrorMessage = " Error : " + msg; 
+$scope.$apply();
+} 
+
+$scope.clearErrorMessage = function(){
+$scope.showError = false ;
+$scope.ErrorMessage = ""; 
+} 
+
+$scope.refreshMap = function(){ 
+$scope.clearErrorMessage(); 
+var address = $scope.city; 
+
+geocoder.geocode( { 'address': address}, function(results, status) {
+if (status == google.maps.GeocoderStatus.OK) {
+
+map.setCenter(results[0].geometry.location);
+var bnds = map.getBounds() ;
+var northEast = bnds.getNorthEast() ;
+var southWest = bnds.getSouthWest() ; 
+
+$scope.geoNamesRequest(northEast.lat(),northEast.lng(),southWest.lat(),southWest.lng() ); 
+
+} else { 
+$scope.showErrorMessage("Geocode was not successful for reason:"+status); 
+}
+});
+}
+
+$scope.geoNamesRequest = function(north,east,south,west){ 
+var url = 'http://api.geonames.org/earthquakesJSON?north='+north+'&south='+south+'&east='+east+'&west='+west+'&username=jitendra.zaa'; 
+
+$http.get(url).
+success(function(data, status) { 
+
+var markerArray = [];
+angular.forEach(data.earthquakes, function(item) {
+
+markerArray.push(new google.maps.Marker({
+position: new google.maps.LatLng(item.lat,item.lng),
+map: map,
+title: "Magnitude : "+item.magnitude +", Datetime : "+item.datetime 
+})
+);
+});
+
+}).
+error(function(data, status) { 
+$scope.showErrorMessage(data.status.message); 
+});
+} 
+
+$scope.largestEarthquick = function(){
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; 
+var yyyy = today.getFullYear(); 
+var url = 'http://api.geonames.org/earthquakesJSON?north=85&south=-85&east=180&west=-180&minMagnitude=7&username=jitendra.zaa&date='+yyyy+'-'+mm+'-'+dd; 
+
+$http.get(url).
+success(function(data, status) { 
+$scope.last12Month = data.earthquakes ; 
+}).
+error(function(data, status) { 
+$scope.showErrorMessage(data.status.message); 
+});
+
+} 
+
+$scope.refreshMapLatLng(38.322 , 142.369); 
+$scope.refreshMap(); 
+$scope.largestEarthquick();
+
+}]); 
+
+</script>
+
+<style>
+#mainContainer{
+padding:30px;;
+}
+
+#map-canvas {
+width:100%;
+height:500px;
+-moz-box-shadow: 0 0 2px black;
+-webkit-box-shadow: 0 0 2px black;
+box-shadow: 0 0 2px black;
+}
+
+#errorMsg {
+padding:10px; 
+-moz-box-shadow: 0 0 2px #c7254e;
+-webkit-box-shadow: 0 0 2px #c7254e;
+box-shadow: 0 0 2px #c7254e;
+} 
+
+.btnCustom {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.42857143;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+-ms-touch-action: manipulation;
+touch-action: manipulation;
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+background-image: none;
+border: 1px solid transparent;
+border-radius: 4px;
+}
+
+.btn-success {
+color: #fff;
+background-color: #5cb85c;
+border-color: #4cae4c;
+}
+
+.pointer {
+cursor:pointer;
+}
+
+</style>
+
+</apex:page>

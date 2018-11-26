@@ -1,0 +1,42 @@
+function myFunction2() {
+  showURL("http://www.google.com");
+}
+
+
+function myFunction(){
+  var app = UiApp.createApplication();
+  // Creates a link to your favorite search engine.
+  var anchor = app.createAnchor("a link", "http://www.baidu.com");
+  app.add(anchor);
+  return app;
+}
+
+//
+function showURL(href){
+  var app = UiApp.createApplication().setHeight(50).setWidth(200);
+  app.setTitle("Show URL");
+  var link = app.createAnchor('open ', href).setId("link");
+  app.add(link);  
+  var doc = SpreadsheetApp.getActive();
+  doc.show(app);
+  }
+
+
+
+function openNewWindow(url) {
+
+  var htmlString = 
+    '<div>' + 
+      '<input type="button" value="Close" onclick="google.script.host.close()" />' + 
+    '</div>' +
+    '<script>window.open('+url+')</script>';
+
+  var htmlOutput = HtmlService
+    .createHtmlOutput(htmlString)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setHeight(60);
+      
+  SpreadsheetApp
+    .getUi()
+    .showModalDialog(htmlOutput, 'Opening New Window...');  
+}

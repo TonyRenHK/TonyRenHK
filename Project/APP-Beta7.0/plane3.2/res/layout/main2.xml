@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	>
+	<cn.m15.xys.SlyButtonView
+	 android:id="@+id/slybutton"
+	 android:layout_width="wrap_content"
+     android:layout_height="wrap_content"/>
+	
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" >
+		
+		<TextView
+		android:id="@+id/current_score"
+		android:text="@string/score"
+		android:visibility="visible"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentBottom="true"
+		android:textColor="#ffffff"
+		android:textSize="96sp"/>
+
+		<TextView
+		    android:id="@+id/total_score"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:layout_toRightOf="@id/current_score"
+		    android:includeFontPadding="true"
+		    android:text="@string/best"
+		    android:textColor="#ffffff"
+		    android:textSize="12sp"
+		    android:visibility="visible" />
+
+		<TextView
+		android:id="@+id/time"
+		android:text="@string/time_left"
+		android:visibility="visible"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:layout_toRightOf="@id/total_score"
+		android:textColor="#ffffff"
+		android:textSize="96sp"/>
+	</RelativeLayout>
+	<LinearLayout
+	  android:layout_width="wrap_content" android:layout_height="wrap_content"
+	  android:orientation="vertical">
+	   <TextView
+	    android:id="@+id/over"
+		android:text="@string/game_over"
+		android:visibility="gone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textColor="#ffffff"
+		android:textSize="24sp"/>
+	   <TextView
+	    android:id="@+id/final_score"
+		android:text="@string/last_score"
+		android:visibility="gone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:textColor="#ffffff"
+		android:textSize="20sp"/>
+	</LinearLayout>
+</LinearLayout>

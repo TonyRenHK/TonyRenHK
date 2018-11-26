@@ -1,0 +1,21 @@
+function button1() {
+  openNewWindow('<script>window.open("https://www.github.com/")</script>');
+}
+
+
+function openNewWindow(urll) {
+
+  var htmlString = 
+    '<div>' +
+      '<input type="button" value="Close" onclick="google.script.host.close()" />' + 
+    '</div>' +urll;
+
+  var htmlOutput = HtmlService
+    .createHtmlOutput(htmlString)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .setHeight(60);
+      
+  SpreadsheetApp
+    .getUi()
+    .showModalDialog(htmlOutput, 'Opening New Window...');  
+}
